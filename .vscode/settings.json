@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    "dist": true,
+    ".parcel-cache": true,
+    "yarn.lock": true,
+    ".gitignore": true,
+    "src/index.html": true,
+    "src/index.tsx": true
+  }
+}
