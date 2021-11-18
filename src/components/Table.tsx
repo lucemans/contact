@@ -21,6 +21,8 @@ const Columns = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: stretch;
+    overflow: hidden;
+    word-wrap: break-word;
     ${Column} + ${Column} {
         border-left: 1px dotted #686868;
     }

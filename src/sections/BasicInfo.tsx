@@ -20,8 +20,7 @@ const Properties = styled.div`
     }
 `;
 
-const KeyValue = styled.div`
-`;
+const KeyValue = styled.div``;
 
 const Key = styled.b``;
 

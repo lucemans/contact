@@ -19,6 +19,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     text-transform: uppercase;
   }
+  html {
+    overflow-y: scroll;
+  }
   * {
     box-sizing: border-box;
   }
@@ -31,13 +34,15 @@ const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 100%;
   width: 900px;
-  margin: 0 1rem;
+  max-width: calc(100vw - 2rem);
   display: flex;
+  display: flex;
+  margin: 0 1rem;
   flex-direction: column;
   gap: 1rem;
   padding-bottom: 10vh;
