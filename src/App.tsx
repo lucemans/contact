@@ -73,7 +73,7 @@ export const App = () => {
           </Table>
         </ContentWrapper>
       </Center>
-      {/* <script defer data-domain="luc.computer" src="https://analytics.lvksh.cloud/js/plausible.js"></script> */}
+      <script defer data-domain="helpineed.work" src="https://analytics.lvksh.cloud/js/plausible.js"></script>
     </>
   )
 };
