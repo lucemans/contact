@@ -20,11 +20,13 @@ const Properties = styled.div`
     }
 `;
 
-const KeyValue = styled.div``;
+const KeyValue = styled.div`
+    display: flex;
+`;
 
 const Key = styled.b``;
 
-const Value = styled.span``;
+const Value = styled.div``;
 
 export const BasicInfo = () => {
 
@@ -42,6 +44,9 @@ export const BasicInfo = () => {
                                 ['Bio', 'Create Epic Shit'],
                                 ['Github', <a href="https://github.com/lucemans" target="_blank">https://github.com/lucemans</a>],
                                 ['Twitter', <a href="https://twitter.com/lucemans" target="_blank">@lucemansnl</a>],
+                                ['Tel', <a href="tel:0031618925911" target="_blank">+31 618 925 911</a>],
+                                ['Eth', 'lucemans.eth'],
+                                ['PGP Key', <a href="https://luc.contact/lucemans.asc" target="_blank">69F2 4A82 16AA E27D 2D2A<br />428C E6D8 1E8E EC87 269A</a>]
                             ].map((a, i) => (
                                 <KeyValue key={i}>
                                     <Key>
