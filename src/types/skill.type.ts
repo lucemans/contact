@@ -4,4 +4,10 @@ export type Skill = {
     url?: string;
     color?: string;
     description?: string;
+    relatedTechnologies?: RelatedSkill[]
 };
+
+export type RelatedSkill = {
+    label: string;
+    url?: string;
+}

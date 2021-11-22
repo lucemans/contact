@@ -16,6 +16,7 @@ export const HorizontalList = styled.div`
     justify-content: stretch;
     width: 100%;
     gap: 1rem;
+    break-inside: avoid;
     > * {
         flex: 1;
     }

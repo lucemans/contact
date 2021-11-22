@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     border: 1px dotted #686868;
+    break-inside: avoid;
 `;
 
 const Header = styled.div`

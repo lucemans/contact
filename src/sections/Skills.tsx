@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Profile } from '../static/profile';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { Table } from '../components/Table';
+import { Skill } from 'types/skill.type';
 
 const SkillExternal = styled.div`
     display: flex;
@@ -19,6 +19,7 @@ const SkillInternal = styled.div`
     height: 0;
     overflow: none;
     visibility: hidden;
+    padding: 1rem 0;
 `;
 
 const SkillEntry = styled.div`
@@ -33,36 +34,75 @@ const SkillEntry = styled.div`
 `;
 
 const SkillIcon = styled.img`
-    height: 2rem;
-    width: 2rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin: 0.2rem;
     object-fit: contain;
     margin-right: 1rem;
     user-select: none;
 `;
 
-export const Skills = () => {
+const Grey = styled.div`
+    color: var(--color-alt);
+    &:before {
+        content: '-';
+        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+    }
+    @media screen and (max-width: 765px) {
+        display: none;
+    }
+`;
+
+const RelatedTechnologies = styled.div`
+    display: flex;
+    gap: 0.3rem;
+    justify-content: flex-end;
+    width: 100%;
+    flex-wrap: wrap;
+`;
+const RelatedTechnology = styled.div`
+    display: flex;
+    color: rgba(255,255,255,0.3);
+    gap: 0.1rem;
+`;
+const RelatedTechnologyLabel = styled.a`
+    color: lightblue;
+`;
+
+export const Skills: FC<{ title: string, set: Skill[], showDescription?: boolean }> = ({ set, title, showDescription }) => {
 
     const [expanded, setExpanded] = useState<string[]>([]);
 
     return (
-        <Table header={"Skills"}>
+        <Table header={title}>
 
             {
-                Profile.skills.map(a => (
-                    <SkillEntry key={a.label} data-expanded={expanded.includes(a.label)}>
+                set.map(skill => (
+                    <SkillEntry key={skill.label} data-expanded={expanded.includes(skill.label)}>
                         <SkillExternal onClick={(c) => {
                             c.preventDefault();
-                            if (expanded.includes(a.label)) {
-                                setExpanded(expanded.filter(b => b != a.label));
+                            if (expanded.includes(skill.label)) {
+                                setExpanded(expanded.filter(b => b != skill.label));
                             } else {
-                                setExpanded([...expanded, a.label]);
+                                setExpanded([...expanded, skill.label]);
                             }
                         }}>
-                            <SkillIcon src={a.image} alt={a.label + 'logo'} />
-                            <span>{a.label}</span>
+                            <SkillIcon src={skill.image} alt={skill.label + 'logo'} />
+                            <span>{skill.label}</span>{showDescription && skill.description && <Grey>{skill.description}</Grey>}
                         </SkillExternal>
                         <SkillInternal>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            {skill.relatedTechnologies &&
+                                <RelatedTechnologies>
+                                    {
+                                        skill.relatedTechnologies.map((relatedTechnology, i) => (
+                                            <RelatedTechnology key={i}>
+                                                #<RelatedTechnologyLabel href={relatedTechnology.url}>{relatedTechnology.label}</RelatedTechnologyLabel>
+                                            </RelatedTechnology>
+                                        ))
+                                    }
+                                </RelatedTechnologies>
+                            }
                         </SkillInternal>
                     </SkillEntry>
                 ))

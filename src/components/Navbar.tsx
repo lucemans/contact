@@ -23,7 +23,7 @@ const Links = styled.div`
 `;
 
 const Link = styled.a`
-    color: white;
+    color: var(--color-main);
     text-decoration: none;
     &:hover {
         text-decoration: underline;

@@ -9,11 +9,12 @@ import { Timeline } from './sections/Timeline';
 import { Table } from './components/Table';
 import { Repositories } from './sections/Repositories';
 import { BasicInfo } from './sections/BasicInfo';
+import { Profile } from './static/profile';
 
 const GlobalStyle = createGlobalStyle`
   html, body {
-    background: #2d2e2f;
-    color: white;
+    background: var(--color-bg);
+    color: var(--color-main);
     font-family: 'Hack', monospace;
     margin: 0;
     padding: 0;
@@ -27,6 +28,19 @@ const GlobalStyle = createGlobalStyle`
   }
   :root {
     font-size: 18px;
+    --color-bg: #2d2e2f;
+    --color-main: white;
+    --color-alt: #6c6c6c;
+  }
+  @media print {
+    html, body {
+      --color-bg: white;
+      --color-main: #2d2e2f;
+      --color-alt: #6c6c6c;
+    }
+    :root {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -40,12 +54,11 @@ const Center = styled.div`
 const ContentWrapper = styled.div`
   width: 900px;
   max-width: calc(100vw - 2rem);
-  display: flex;
-  display: flex;
   margin: 0 1rem;
-  flex-direction: column;
-  gap: 1rem;
   padding-bottom: 10vh;
+  > * {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const App = () => {
@@ -63,7 +76,12 @@ export const App = () => {
       <Center className="content">
         <ContentWrapper>
           <BasicInfo />
-          <Skills />
+          <Skills title="Technologies" set={Profile.technologies} showDescription={true} />
+          <HorizontalList>
+            <Skills title="Tools" set={Profile.tools} />
+            <Skills title="Languages" set={Profile.languages} />
+            <Skills title="Databases" set={Profile.database} />
+          </HorizontalList>
           <HorizontalList>
             <Organizations />
             <Repositories />

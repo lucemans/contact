@@ -12,7 +12,7 @@ const ProfilePicture = styled.img`
 
 const Properties = styled.div`
     a {
-        color: white;
+        color: var(--color-main);
         text-decoration: none;
         &:hover {
             text-decoration: underline;
@@ -42,9 +42,10 @@ export const BasicInfo = () => {
                             [
                                 ['Name', 'Luc van Kampen'],
                                 ['Bio', 'Create Epic Shit'],
-                                ['Github', <a href="https://github.com/lucemans" target="_blank">https://github.com/lucemans</a>],
-                                ['Twitter', <a href="https://twitter.com/lucemans" target="_blank">@lucemansnl</a>],
                                 ['Tel', <a href="tel:0031618925911" target="_blank">+31 618 925 911</a>],
+                                ['Github', <a href="https://github.com/lucemans" target="_blank">lucemans</a>],
+                                ['Twitter', <a href="https://twitter.com/lucemansnl" target="_blank">@lucemansnl</a>],
+                                ['Linkedin', <a href="https://linkedin.com/in/lucemans" target="_blank">Luc van Kampen</a>],
                                 ['Eth', 'lucemans.eth'],
                                 ['PGP Key', <a href="https://luc.contact/lucemans.asc" target="_blank">69F2 4A82 16AA E27D 2D2A<br />428C E6D8 1E8E EC87 269A</a>]
                             ].map((a, i) => (

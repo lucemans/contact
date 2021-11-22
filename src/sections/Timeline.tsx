@@ -74,7 +74,7 @@ const LineEntryContainerInternal = styled.div`
         height: 2rem;
     }
     a {
-        color: white;
+        color: var(--color-main);
         text-decoration: none;
         &:hover {
             text-decoration: underline;
@@ -91,6 +91,25 @@ const LineEntryWrapper = styled.div<{ color: string, duration: number }>`
     flex: ${({ duration }) => duration};
     position: relative;
     &:hover {
+        ${LineEntryBackground} {
+            opacity: 0.5;
+        }
+        ${LineEntryStartDate} {
+            opacity: 1;
+        }
+        ${LineEntryContainer} {
+            opacity: 1;
+            ${LineEntryContainerInternal} {
+                opacity: 1;
+                display: flex;
+            }
+            ${LineEntryContainerExternal} {
+                opacity: 0;
+                display: none;
+            }
+        }
+    }
+    @media print {
         ${LineEntryBackground} {
             opacity: 0.5;
         }

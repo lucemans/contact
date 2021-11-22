@@ -48,7 +48,7 @@ export const Repositories = () => {
         <Table header={"Repositories"}>
 
             {
-                Profile.skills.map(a => (
+                Profile.repos.map(a => (
                     <SkillEntry key={a.label} data-expanded={expanded.includes(a.label)}>
                         <SkillExternal onClick={(c) => {
                             c.preventDefault();
@@ -58,7 +58,7 @@ export const Repositories = () => {
                                 setExpanded([...expanded, a.label]);
                             }
                         }}>
-                            <SkillIcon src={a.image} alt={a.label + 'logo'} />
+                            {/* <SkillIcon src={a.image} alt={a.label + 'logo'} /> */}
                             <span>{a.label}</span>
                         </SkillExternal>
                         <SkillInternal>
