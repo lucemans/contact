@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Profile } from '../static/profile';
 import styled from 'styled-components';
 import { Organization } from 'types/organization.type';
@@ -88,7 +88,7 @@ const LineEntryContainerExternal = styled.div`
 
 const LineEntryWrapper = styled.div<{ color: string, duration: number }>`
     border-bottom: 1px solid ${(a) => a.color};
-    flex: ${({ duration }) => duration};
+    flex: 1;
     position: relative;
     &:hover {
         ${LineEntryBackground} {
@@ -129,6 +129,7 @@ const LineEntryWrapper = styled.div<{ color: string, duration: number }>`
         }
     }
     @media screen and (max-width: 765px) {
+        flex: ${({ duration }) => duration};
         border-left: 1px solid ${(a) => a.color};
         border-bottom: 0;
         ${LineEntryBackground} {
@@ -178,7 +179,7 @@ const LineEntryFinal = styled.div`
 
 const LineEntry: FC<{ org: Organization, totalDuration: number, last: boolean }> = ({ org, totalDuration, last }) => {
 
-    const duration = (Math.ceil(((org.end_date ? new Date(org.end_date) : new Date()).getTime() - new Date(org.start_date).getTime()) / (1000 * 3600 * 24)) * 100) / totalDuration + (last ? 40 : 0);
+    const duration = (Math.ceil(((org.end_date ? new Date(org.end_date) : new Date()).getTime() - new Date(org.start_date).getTime()) / (1000 * 3600 * 24)) * 100) / totalDuration + (last ? 15 : 0);
     const startDate = new Date(org.start_date);
 
     return (
