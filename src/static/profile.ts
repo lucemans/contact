@@ -142,6 +142,10 @@ export const Profile: {
             label: 'mongodb',
             image: require('url:/assets/skills/mongo.svg')
         },
+        {
+            label: 'postgresql',
+            image: require('url:/assets/skills/postgresql.svg')
+        }
     ],
     orgs: [
         {
