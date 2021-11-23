@@ -91,7 +91,6 @@ export const App = () => {
           </Table>
         </ContentWrapper>
       </Center>
-      <script defer data-domain="luc.wiki" src="https://analytics.lvksh.cloud/js/plausible.js"></script>
     </>
   )
 };
