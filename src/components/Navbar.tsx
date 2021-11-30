@@ -57,7 +57,7 @@ export const NavBar = () => {
                     <LinkDivider />
                     <Link href="https://discord.gg/RUvPQxXUUE" target="_blank">devtalk</Link>
                     <LinkDivider />
-                    <Link href="/secret" target="_blank">secret</Link>
+                    <Link href="https://luc.contact/secret" target="_blank">secret</Link>
                 </Links>
             </Nav>
         </Wrapper>
