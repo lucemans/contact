@@ -149,28 +149,42 @@ export const Profile: {
     ],
     orgs: [
         {
-            label: 'EForumFactory',
-            image: require('url:/assets/experience/eff.png'),
-            color: '#006381',
-            start_date: '1 Jan 2018',
-            end_date: '1 Feb 2021',
-            url: 'https://eforumfactory.be/'
+            label: 'Heineken',
+            image: require('url:/assets/experience/heineken-corporate.svg'),
+            color: '#fff',
+            start_date: '28 Nov 2021',
+            url: 'https://heineken.com/'
+        },
+        {
+            label: 'Triple',
+            image: require('url:/assets/experience/triple.svg'),
+            color: '#0E0940',
+            start_date: '28 Nov 2021',
+            url: 'https://wearetriple.com/'
+        },
+        {
+            label: 'Passionate People',
+            image: require('url:/assets/experience/pp.png'),
+            color: '#171717',
+            start_date: '1 Nov 2021',
+            url: 'https://passionatepeople.io/'
         },
         {
             label: 'Codana',
-            image: require('url:/assets/experience/codana.jpeg'),
+            image: require('url:/assets/experience/codana.png'),
             color: '#8400ff',
             start_date: '1 Feb 2021',
             end_date: '31 Oct 2021',
             url: 'https://codana.eu/'
         },
         {
-            label: 'Passionate People',
-            image: require('url:/assets/experience/pp.png'),
-            color: '#ff0000',
-            start_date: '1 Nov 2021',
-            url: 'https://passionatepeople.io/'
-        }
+            label: 'EForumFactory',
+            image: require('url:/assets/experience/eff2.png'),
+            color: '#fff',
+            start_date: '1 Jan 2018',
+            end_date: '1 Feb 2021',
+            url: 'https://eforumfactory.be/'
+        },
     ],
     repos: []
 };

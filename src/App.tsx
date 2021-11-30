@@ -76,19 +76,19 @@ export const App = () => {
       <Center className="content">
         <ContentWrapper>
           <BasicInfo />
+          <HorizontalList>
+            <Organizations />
+            <Repositories />
+          </HorizontalList>
           <Skills title="Technologies" set={Profile.technologies} showDescription={true} />
           <HorizontalList>
             <Skills title="Tools" set={Profile.tools} />
             <Skills title="Languages" set={Profile.languages} />
             <Skills title="Databases" set={Profile.database} />
           </HorizontalList>
-          <HorizontalList>
-            <Organizations />
-            <Repositories />
-          </HorizontalList>
-          <Table header={"Timeline"}>
+          {/* <Table header={"Timeline"}>
             <Timeline />
-          </Table>
+          </Table> */}
         </ContentWrapper>
       </Center>
     </>

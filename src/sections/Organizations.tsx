@@ -1,54 +1,129 @@
-import React, { useState } from 'react';
-import { Profile } from '../static/profile';
-import styled from 'styled-components';
-import { Table } from '../components/Table';
+import React, { useState } from "react";
+import { Profile } from "../static/profile";
+import styled from "styled-components";
+import { Table } from "../components/Table";
+import { Grid, List } from "react-feather";
+import { getDuration } from "../utils/getDuration";
+import { format } from "date-fns";
 
-const SkillExternal = styled.div`
+const OrgExternal = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: stretch;
     align-items: center;
-    width: fit-content;
+    width: 100%;
     &:hover {
         text-decoration: underline;
         cursor: pointer;
     }
 `;
 
-const SkillEntry = styled.div`
+const OrgEntry = styled.div``;
 
+const OrgIcon = styled.img<{ color: string; standalone?: boolean }>`
+    height: 3rem;
+    width: 3rem;
+    object-fit: contain;
+    margin-right: ${({ standalone }) => (standalone ? "" : "1rem")};
+    user-select: none;
+    background: ${({ color }) => color};
+    padding: 0.2rem;
+    border-radius: 0.4rem;
 `;
 
-const SkillIcon = styled.img`
-    height: 2rem;
-    width: 2rem;
-    object-fit: contain;
-    margin-right: 1rem;
+const GridOrgs = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+`;
+
+const IconContainer = styled.div`
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
     user-select: none;
 `;
 
-export const Organizations = () => {
+const ListOrgs = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`;
 
-    const [expanded, setExpanded] = useState<string[]>([]);
+const OrgName = styled.div`
+    flex-grow: 1;
+`;
+
+const OrgDate = styled.div`
+    font-size: 0.8rem;
+    color: var(--color-alt);
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: fit-content;
+`;
+
+export const Organizations = () => {
+    const [displayMode, setDisplayMode] = useState<"grid" | "list">("list");
 
     return (
-        <Table header={"TEAMS"}>
-            {
-                Profile.orgs.map(a => (
-                    <SkillEntry key={a.label} data-expanded={expanded.includes(a.label)}>
-                        <SkillExternal onClick={(c) => {
-                            c.preventDefault();
-                            if (expanded.includes(a.label)) {
-                                setExpanded(expanded.filter(b => b != a.label));
-                            } else {
-                                setExpanded([...expanded, a.label]);
-                            }
-                        }}>
-                            <SkillIcon src={a.image} alt={a.label + 'logo'} />
-                            <span>{a.label}</span>
-                        </SkillExternal>
-                    </SkillEntry>
-                ))
+        <Table
+            header={"TEAMS"}
+            sideHeader={
+                <IconContainer
+                    onClick={() =>
+                        setDisplayMode(displayMode == "grid" ? "list" : "grid")
+                    }
+                >
+                    {displayMode == "grid" ? (
+                        <Grid size={18} />
+                    ) : (
+                        <List size={18} />
+                    )}
+                </IconContainer>
             }
+        >
+            {displayMode == "grid" && (
+                <GridOrgs>
+                    {Profile.orgs.map((organization) => (
+                        <OrgEntry key={organization.label}>
+                            <OrgExternal>
+                                <OrgIcon
+                                    src={organization.image}
+                                    alt={organization.label + "logo"}
+                                    color={organization.color}
+                                    standalone
+                                />
+                            </OrgExternal>
+                        </OrgEntry>
+                    ))}
+                </GridOrgs>
+            )}
+            {displayMode == "list" && (
+                <ListOrgs>
+                    {Profile.orgs.map((organization) => (
+                        <OrgEntry key={organization.label}>
+                            <OrgExternal>
+                                <OrgIcon
+                                    src={organization.image}
+                                    alt={organization.label + "logo"}
+                                    color={organization.color}
+                                />
+                                <div>
+                                    <OrgName>{organization.label}</OrgName>
+                                    <OrgDate>
+                                        {organization.end_date
+                                            ? getDuration(
+                                                organization.start_date,
+                                                organization.end_date
+                                            )
+                                            : `Since ${format(new Date(organization.start_date), 'MMMM yyyy')}`}
+                                    </OrgDate>
+                                </div>
+                            </OrgExternal>
+                        </OrgEntry>
+                    ))}
+                </ListOrgs>
+            )}
         </Table>
     );
 };

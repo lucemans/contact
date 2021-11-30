@@ -55,7 +55,9 @@ export const NavBar = () => {
                 <Links>
                     <Link href="https://luc.computer/">computer</Link>
                     <LinkDivider />
-                    <Link href="https://luc.contact/">CONTACT</Link>
+                    <Link href="https://discord.gg/RUvPQxXUUE">devtalk</Link>
+                    <LinkDivider />
+                    <Link href="/secret">secret</Link>
                 </Links>
             </Nav>
         </Wrapper>

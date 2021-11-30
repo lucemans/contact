@@ -9,6 +9,8 @@ const Wrapper = styled.div`
 const Header = styled.div`
     padding: 1rem 1rem 1rem 1rem;
     border-bottom: 1px dotted #686868;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const Body = styled.div`
@@ -36,7 +38,7 @@ const Columns = styled.div`
     }
 `;
 
-export const Table: FC<{ header: React.ReactNode | null, children: React.ReactNode | (() => React.ReactNode[]) }> = ({ children, header }) => {
+export const Table: FC<{ header: React.ReactNode | null, children: React.ReactNode | (() => React.ReactNode[]), sideHeader?: React.ReactNode }> = ({ children, header, sideHeader }) => {
 
     return (
         <Wrapper>
@@ -45,6 +47,11 @@ export const Table: FC<{ header: React.ReactNode | null, children: React.ReactNo
                     {
                         header
                     }
+                    <div>
+                        {
+                            sideHeader
+                        }
+                    </div>
                 </Header>
             }
             <Body>
