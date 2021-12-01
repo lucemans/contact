@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Profile } from '../static/profile';
-import styled from 'styled-components';
-import { Table } from '../components/Table';
+import React, { useState } from "react";
+import { Profile } from "../static/profile";
+import styled from "styled-components";
+import { Table } from "../components/Table";
+import { IconMap } from "../types/icons.type";
 
 const SkillExternal = styled.div`
     display: flex;
@@ -22,7 +23,7 @@ const SkillInternal = styled.div`
 `;
 
 const SkillEntry = styled.div`
-    &[data-expanded=true] {
+    &[data-expanded="true"] {
         ${SkillInternal} {
             display: flex;
             height: auto;
@@ -41,33 +42,24 @@ const SkillIcon = styled.img`
 `;
 
 export const Repositories = () => {
-
     const [expanded, setExpanded] = useState<string[]>([]);
 
     return (
         <Table header={"Repositories"}>
-
-            {
-                Profile.repos.map(a => (
-                    <SkillEntry key={a.label} data-expanded={expanded.includes(a.label)}>
-                        <SkillExternal onClick={(c) => {
-                            c.preventDefault();
-                            if (expanded.includes(a.label)) {
-                                setExpanded(expanded.filter(b => b != a.label));
-                            } else {
-                                setExpanded([...expanded, a.label]);
-                            }
-                        }}>
-                            {/* <SkillIcon src={a.image} alt={a.label + 'logo'} /> */}
-                            <span>{a.label}</span>
-                        </SkillExternal>
-                        <SkillInternal>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </SkillInternal>
-                    </SkillEntry>
-                ))
-            }
-
+            {Profile.repos.map((a) => (
+                <SkillEntry
+                    key={a.label}
+                    data-expanded={expanded.includes(a.label)}
+                >
+                    {React.createElement(IconMap[a.icon], { size: 24 }, [])}
+                    {/* <SkillIcon src={a.image} alt={a.label + 'logo'} /> */}
+                    <span>{a.label}</span>
+                    {/* <span>
+                        {Object.keys(a).includes("description") &&
+                            a.description}
+                    </span> */}
+                </SkillEntry>
+            ))}
         </Table>
     );
 };

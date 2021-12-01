@@ -186,5 +186,12 @@ export const Profile: {
             url: 'https://eforumfactory.be/'
         },
     ],
-    repos: []
+    repos: [
+        {
+            icon: 'Book',
+            label: 'Does things',
+            url: '',
+            description: 'A thing here'
+        }
+    ]
 };
