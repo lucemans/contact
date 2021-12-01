@@ -20,6 +20,6 @@
     },
     "scripts": {
         "start": "parcel src/index.html",
-        "build": "parcel build src/index.html && cp public ./dist/public"
+        "build": "parcel build src/index.html && cp -r public ./dist/public"
     }
 }
