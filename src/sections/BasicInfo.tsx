@@ -47,7 +47,7 @@ export const BasicInfo = () => {
                                 ['Twitter', <a href="https://twitter.com/lucemansnl" target="_blank">@lucemansnl</a>],
                                 ['Linkedin', <a href="https://linkedin.com/in/lucemans" target="_blank">Luc van Kampen</a>],
                                 ['Eth', 'lucemans.eth'],
-                                ['PGP Key', <a href="https://luc.contact/lucemans.asc" target="_blank">69F2 4A82 16AA E27D 2D2A<br />428C E6D8 1E8E EC87 269A</a>]
+                                ['PGP Key', <a href="https://luc.contact/public/lucemans.asc" target="_blank">69F2 4A82 16AA E27D 2D2A<br />428C E6D8 1E8E EC87 269A</a>]
                             ].map((a, i) => (
                                 <KeyValue key={i}>
                                     <Key>
