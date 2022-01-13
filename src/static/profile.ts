@@ -188,10 +188,39 @@ export const Profile: {
     ],
     repos: [
         {
-            icon: 'Book',
-            label: 'Does things',
-            url: '',
-            description: 'A thing here'
-        }
+            type: 'github',
+            color: '#121212',
+            image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
+            label: '@lvksh/logger',
+            description: 'Zero dependency, light-weight, blazing fast customizable logging library'
+        },
+        {
+            type: 'github',
+            color: '#121212',
+            image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
+            label: 'sunflake',
+            description: 'Zero dependency, lightweight, snowflake generator'
+        },
+        {
+            type: 'github',
+            color: '#121212',
+            image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
+            label: 'scyllo',
+            description: 'The Cassandra/Scylla library you didn\'t want but got anyways.'
+        },
+        {
+            type: 'github',
+            color: '#121212',
+            image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
+            label: '@lvksh/logger',
+            description: 'Zero dependency, light-weight, blazing fast customizable logging library'
+        },
+        {
+            type: 'github',
+            color: '#121212',
+            image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
+            label: 'sunflake',
+            description: 'Zero dependency, lightweight, snowflake generator'
+        },
     ]
 };

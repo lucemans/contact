@@ -38,10 +38,10 @@ const Columns = styled.div`
     }
 `;
 
-export const Table: FC<{ header: React.ReactNode | null, children: React.ReactNode | (() => React.ReactNode[]), sideHeader?: React.ReactNode }> = ({ children, header, sideHeader }) => {
+export const Table: FC<{ header: React.ReactNode | null, children: React.ReactNode | (() => React.ReactNode[]), sideHeader?: React.ReactNode, width?: string }> = ({ children, header, sideHeader, width }) => {
 
     return (
-        <Wrapper>
+        <Wrapper style={width ? {width: width} : {}}>
             {header &&
                 <Header>
                     {
