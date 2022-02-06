@@ -27,7 +27,7 @@ const Body = styled.div`
     flex-direction: column;
 `;
 
-const Column = styled.div`
+export const Column = styled.div`
     padding: 1rem;
     flex: 1;
     min-height: 100%;
@@ -71,9 +71,7 @@ export const Table: FC<{
                     <Columns>
                         {' '}
                         {children().map(
-                            (column: React.ReactNode, index: number) => (
-                                <Column key={index}>{column}</Column>
-                            )
+                            (column: React.ReactNode, index: number) => column
                         )}
                     </Columns>
                 ) : (
