@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Profile } from "../static/profile";
-import styled from "styled-components";
-import { Table } from "../components/Table";
-import { Grid, List } from "react-feather";
-import { getDuration } from "../utils/getDuration";
-import { format } from "date-fns";
+import { format } from 'date-fns';
+import React, { useState } from 'react';
+import { Grid, List } from 'react-feather';
+import styled from 'styled-components';
+
+import { Table } from '../components/Table';
+import { Profile } from '../static/profile';
+import { getDuration } from '../utils/getDuration';
 
 const OrgExternal = styled.div`
     display: flex;
@@ -23,7 +24,7 @@ const OrgIcon = styled.img<{ color: string; standalone?: boolean }>`
     height: 3rem;
     width: 3rem;
     object-fit: contain;
-    margin-right: ${({ standalone }) => (standalone ? "" : "1rem")};
+    margin-right: ${({ standalone }) => (standalone ? '' : '1rem')};
     user-select: none;
     background: ${({ color }) => color};
     padding: 0.2rem;
@@ -63,18 +64,18 @@ const OrgDate = styled.div`
 `;
 
 export const Organizations = () => {
-    const [displayMode, setDisplayMode] = useState<"grid" | "list">("list");
+    const [displayMode, setDisplayMode] = useState<'grid' | 'list'>('grid');
 
     return (
         <Table
-            header={"TEAMS"}
+            header={'TEAMS'}
             sideHeader={
                 <IconContainer
                     onClick={() =>
-                        setDisplayMode(displayMode == "grid" ? "list" : "grid")
+                        setDisplayMode(displayMode == 'grid' ? 'list' : 'grid')
                     }
                 >
-                    {displayMode == "grid" ? (
+                    {displayMode == 'grid' ? (
                         <Grid size={18} />
                     ) : (
                         <List size={18} />
@@ -82,14 +83,14 @@ export const Organizations = () => {
                 </IconContainer>
             }
         >
-            {displayMode == "grid" && (
+            {displayMode == 'grid' && (
                 <GridOrgs>
                     {Profile.orgs.map((organization) => (
                         <OrgEntry key={organization.label}>
                             <OrgExternal>
                                 <OrgIcon
                                     src={organization.image}
-                                    alt={organization.label + "logo"}
+                                    alt={organization.label + 'logo'}
                                     color={organization.color}
                                     standalone
                                 />
@@ -98,14 +99,14 @@ export const Organizations = () => {
                     ))}
                 </GridOrgs>
             )}
-            {displayMode == "list" && (
+            {displayMode == 'list' && (
                 <ListOrgs>
                     {Profile.orgs.map((organization) => (
                         <OrgEntry key={organization.label}>
                             <OrgExternal>
                                 <OrgIcon
                                     src={organization.image}
-                                    alt={organization.label + "logo"}
+                                    alt={organization.label + 'logo'}
                                     color={organization.color}
                                 />
                                 <div>
@@ -113,10 +114,15 @@ export const Organizations = () => {
                                     <OrgDate>
                                         {organization.end_date
                                             ? getDuration(
-                                                organization.start_date,
-                                                organization.end_date
-                                            )
-                                            : `Since ${format(new Date(organization.start_date), 'MMMM yyyy')}`}
+                                                  organization.start_date,
+                                                  organization.end_date
+                                              )
+                                            : `Since ${format(
+                                                  new Date(
+                                                      organization.start_date
+                                                  ),
+                                                  'MMMM yyyy'
+                                              )}`}
                                     </OrgDate>
                                 </div>
                             </OrgExternal>

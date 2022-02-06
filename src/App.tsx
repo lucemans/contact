@@ -1,14 +1,12 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { NavBar } from './components/Navbar';
 import { useEffect } from 'react';
-import { Skills } from './sections/Skills';
-import { Organizations } from './sections/Organizations';
+import styled, { createGlobalStyle } from 'styled-components';
+
 import { HorizontalList } from './components/Flex';
-import { Timeline } from './sections/Timeline';
-import { Table } from './components/Table';
-import { Repositories } from './sections/Repositories';
+import { NavBar } from './components/Navbar';
 import { BasicInfo } from './sections/BasicInfo';
+import { Organizations } from './sections/Organizations';
+import { Repositories } from './sections/Repositories';
+import { Skills } from './sections/Skills';
 import { Profile } from './static/profile';
 
 const GlobalStyle = createGlobalStyle`
@@ -45,52 +43,60 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 const ContentWrapper = styled.div`
-  width: 900px;
-  max-width: calc(100vw - 2rem);
-  margin: 0 1rem;
-  padding-bottom: 10vh;
-  > * {
-    margin-bottom: 1rem;
-  }
+    width: 900px;
+    max-width: calc(100vw - 2rem);
+    margin: 0 1rem;
+    padding-bottom: 10vh;
+    > * {
+        margin-bottom: 1rem;
+    }
 `;
 
 export const App = () => {
+    useEffect(() => {
+        if (
+            location.protocol !== 'https:' &&
+            !location.href.includes('localhost')
+        ) {
+            location.replace(
+                `https:${location.href.slice(location.protocol.length)}`
+            );
+        }
+    }, [0]);
 
-  useEffect(() => {
-    if (location.protocol !== 'https:' && !location.href.includes('localhost')) {
-      location.replace(`https:${location.href.substring(location.protocol.length)}`);
-    }
-  }, [0]);
-
-  return (
-    <>
-      <GlobalStyle />
-      <NavBar />
-      <Center className="content">
-        <ContentWrapper>
-          <BasicInfo />
-          <HorizontalList>
-            <Organizations />
-            <Repositories />
-          </HorizontalList>
-          <Skills title="Technologies" set={Profile.technologies} showDescription={true} />
-          <HorizontalList>
-            <Skills title="Tools" set={Profile.tools} />
-            <Skills title="Languages" set={Profile.languages} />
-            <Skills title="Databases" set={Profile.database} />
-          </HorizontalList>
-          {/* <Table header={"Timeline"}>
+    return (
+        <>
+            <GlobalStyle />
+            <NavBar />
+            <Center className="content">
+                <ContentWrapper>
+                    <BasicInfo />
+                    <HorizontalList>
+                        <Organizations />
+                    </HorizontalList>
+                    <Repositories />
+                    <Skills
+                        title="Technologies"
+                        set={Profile.technologies}
+                        showDescription={true}
+                    />
+                    <HorizontalList>
+                        <Skills title="Tools" set={Profile.tools} />
+                        <Skills title="Languages" set={Profile.languages} />
+                        <Skills title="Databases" set={Profile.database} />
+                    </HorizontalList>
+                    {/* <Table header={"Timeline"}>
             <Timeline />
           </Table> */}
-        </ContentWrapper>
-      </Center>
-    </>
-  )
+                </ContentWrapper>
+            </Center>
+        </>
+    );
 };
