@@ -127,6 +127,7 @@ export const App = () => {
                         <Organizations />
                     </HorizontalList>
                     <Repositories />
+                    <Contributions />
                     <Skills
                         title="Technologies"
                         set={Profile.technologies}
@@ -137,7 +138,6 @@ export const App = () => {
                         <Skills title="Languages" set={Profile.languages} />
                         <Skills title="Databases" set={Profile.database} />
                     </HorizontalList>
-                    <Contributions />
                     {/* <Table header={"Timeline"}>
             <Timeline />
           </Table> */}
