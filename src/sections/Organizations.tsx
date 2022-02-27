@@ -64,25 +64,10 @@ const OrgDate = styled.div`
 `;
 
 export const Organizations = () => {
-    const [displayMode, setDisplayMode] = useState<'grid' | 'list'>('grid');
+    const [displayMode, setDisplayMode] = useState<'grid' | 'list'>('list');
 
     return (
-        <Table
-            header={'TEAMS'}
-            sideHeader={
-                <IconContainer
-                    onClick={() =>
-                        setDisplayMode(displayMode == 'grid' ? 'list' : 'grid')
-                    }
-                >
-                    {displayMode == 'grid' ? (
-                        <Grid size={18} />
-                    ) : (
-                        <List size={18} />
-                    )}
-                </IconContainer>
-            }
-        >
+        <Table header={'TEAMS'}>
             {displayMode == 'grid' && (
                 <GridOrgs>
                     {Profile.orgs.map((organization) => (

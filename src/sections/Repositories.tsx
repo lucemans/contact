@@ -73,17 +73,18 @@ const Repository: FC<{ repo: IRepository }> = ({ repo }) => {
     return (
         <Table
             header={
-                <>
-                    <OrgName>
-                        <Book />
-                        {repo.label}
-                    </OrgName>
-                    <OrgGithub>
-                        <EntryLink href={repo.link}>
-                            <GitHub />
-                        </EntryLink>
-                    </OrgGithub>
-                </>
+                repo.label
+                // <>
+                //     <OrgName>
+                //         <Book />
+                //         {repo.label}
+                //     </OrgName>
+                //     <OrgGithub>
+                //         <EntryLink href={repo.link}>
+                //             <GitHub />
+                //         </EntryLink>
+                //     </OrgGithub>
+                // </>
             }
         >
             <RepoEntry>

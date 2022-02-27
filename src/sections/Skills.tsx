@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import { Table } from '../components/Table';
 import { Skill } from 'types/skill.type';
+
+import { Table } from '../components/Table';
 
 const SkillExternal = styled.div`
     display: flex;
@@ -23,7 +24,7 @@ const SkillInternal = styled.div`
 `;
 
 const SkillEntry = styled.div`
-    &[data-expanded=true] {
+    &[data-expanded='true'] {
         ${SkillInternal} {
             display: flex;
             height: auto;
@@ -63,51 +64,69 @@ const RelatedTechnologies = styled.div`
 `;
 const RelatedTechnology = styled.div`
     display: flex;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
     gap: 0.1rem;
 `;
 const RelatedTechnologyLabel = styled.a`
     color: lightblue;
 `;
 
-export const Skills: FC<{ title: string, set: Skill[], showDescription?: boolean }> = ({ set, title, showDescription }) => {
-
+export const Skills: FC<{
+    title: string;
+    set: Skill[];
+    showDescription?: boolean;
+}> = ({ set, title, showDescription }) => {
     const [expanded, setExpanded] = useState<string[]>([]);
 
     return (
         <Table header={title}>
-
-            {
-                set.map(skill => (
-                    <SkillEntry key={skill.label} data-expanded={expanded.includes(skill.label)}>
-                        <SkillExternal onClick={(c) => {
+            {set.map((skill) => (
+                <SkillEntry
+                    key={skill.label}
+                    data-expanded={expanded.includes(skill.label)}
+                >
+                    <SkillExternal
+                        onClick={(c) => {
                             c.preventDefault();
+
                             if (expanded.includes(skill.label)) {
-                                setExpanded(expanded.filter(b => b != skill.label));
+                                setExpanded(
+                                    expanded.filter((b) => b != skill.label)
+                                );
                             } else {
                                 setExpanded([...expanded, skill.label]);
                             }
-                        }}>
-                            <SkillIcon src={skill.image} alt={skill.label + 'logo'} />
-                            <span>{skill.label}</span>{showDescription && skill.description && <Grey>{skill.description}</Grey>}
-                        </SkillExternal>
-                        <SkillInternal>
-                            {skill.relatedTechnologies &&
-                                <RelatedTechnologies>
-                                    {
-                                        skill.relatedTechnologies.map((relatedTechnology, i) => (
-                                            <RelatedTechnology key={i}>
-                                                #<RelatedTechnologyLabel href={relatedTechnology.url}>{relatedTechnology.label}</RelatedTechnologyLabel>
-                                            </RelatedTechnology>
-                                        ))
-                                    }
-                                </RelatedTechnologies>
-                            }
-                        </SkillInternal>
-                    </SkillEntry>
-                ))
-            }
-
+                        }}
+                    >
+                        <SkillIcon
+                            src={skill.image}
+                            alt={skill.label + 'logo'}
+                        />
+                        <span>{skill.label}</span>
+                        {showDescription && skill.description && (
+                            <Grey>{skill.description}</Grey>
+                        )}
+                    </SkillExternal>
+                    <SkillInternal>
+                        {skill.relatedTechnologies && (
+                            <RelatedTechnologies>
+                                {skill.relatedTechnologies.map(
+                                    (relatedTechnology, index) => (
+                                        <RelatedTechnology key={index}>
+                                            #
+                                            <RelatedTechnologyLabel
+                                                href={relatedTechnology.url}
+                                            >
+                                                {relatedTechnology.label}
+                                            </RelatedTechnologyLabel>
+                                        </RelatedTechnology>
+                                    )
+                                )}
+                            </RelatedTechnologies>
+                        )}
+                    </SkillInternal>
+                </SkillEntry>
+            ))}
         </Table>
     );
 };

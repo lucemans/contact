@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { merge } from '~/utils/merge';
-
 const Wrapper = styled.div<{ width: string; mobileWidth: string }>`
-    border: 1px dotted #686868;
+    position: relative;
+    border: 1px solid #686868;
     break-inside: avoid;
     width: ${({ width }) => width};
     display: flex;
@@ -15,10 +14,16 @@ const Wrapper = styled.div<{ width: string; mobileWidth: string }>`
 `;
 
 const Header = styled.div`
-    padding: 1rem 1rem 1rem 1rem;
-    border-bottom: 1px dotted #686868;
-    display: flex;
-    justify-content: space-between;
+    position: absolute;
+    left: 1rem;
+    transform: translateY(-50%);
+    background: var(--theme-bg);
+    padding: 0.35em;
+
+    /* padding: 1rem 1rem 1rem 1rem; */
+    /* border-bottom: 1px dotted #686868; */
+    /* display: flex; */
+    /* justify-content: space-between; */
 `;
 
 const Body = styled.div`
@@ -28,7 +33,7 @@ const Body = styled.div`
 `;
 
 export const Column = styled.div`
-    padding: 1rem;
+    padding: 1.4rem;
     flex: 1;
     min-height: 100%;
 `;
