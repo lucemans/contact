@@ -25,6 +25,13 @@ const Header = styled.div`
     /* display: flex; */
     /* justify-content: space-between; */
 `;
+const SideHeader = styled.div`
+    position: absolute;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: var(--theme-bg);
+    padding: 0.35em;
+`;
 
 const Body = styled.div`
     flex: 1;
@@ -65,12 +72,8 @@ export const Table: FC<{
 }> = ({ children, header, sideHeader, width, mobileWidth }) => {
     return (
         <Wrapper width={width} mobileWidth={mobileWidth}>
-            {header && (
-                <Header>
-                    {header}
-                    <div>{sideHeader}</div>
-                </Header>
-            )}
+            {header && <Header>{header}</Header>}
+            {sideHeader && <SideHeader>{sideHeader}</SideHeader>}
             <Body>
                 {typeof children == 'function' ? (
                     <Columns>

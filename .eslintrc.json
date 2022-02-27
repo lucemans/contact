@@ -13,7 +13,9 @@
         "lvksh"
     ],
     "env": {
-        "node": true
+        "browser": true
     },
-    "rules": {}
+    "rules": {
+        "unicorn/no-useless-undefined": "off"
+    }
 }

@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { HorizontalList } from './components/Flex';
 import { NavBar } from './components/Navbar';
 import { BasicInfo } from './sections/BasicInfo';
+import { Contributions } from './sections/Contributions';
 import { Organizations } from './sections/Organizations';
 import { Repositories } from './sections/Repositories';
 import { Skills } from './sections/Skills';
@@ -136,6 +137,7 @@ export const App = () => {
                         <Skills title="Languages" set={Profile.languages} />
                         <Skills title="Databases" set={Profile.database} />
                     </HorizontalList>
+                    <Contributions />
                     {/* <Table header={"Timeline"}>
             <Timeline />
           </Table> */}
