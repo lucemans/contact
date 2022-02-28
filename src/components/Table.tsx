@@ -19,6 +19,13 @@ const Header = styled.div`
     transform: translateY(-50%);
     background: var(--theme-bg);
     padding: 0.35em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @media screen and (max-width: 500px) {
+        max-width: 240px;
+    }
 
     /* padding: 1rem 1rem 1rem 1rem; */
     /* border-bottom: 1px dotted #686868; */

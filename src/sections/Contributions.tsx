@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -16,11 +17,16 @@ const ContributionsSquare = styled.svg`
 const TooltipInner = styled.div`
     display: flex;
     align-items: stretch;
+    white-space: nowrap;
 `;
 
 const MiniSquare = styled.div`
     width: 0.2rem;
-    margin-right: 0.2rem;
+    margin-right: 0.4rem;
+`;
+
+const DateText = styled.div`
+    color: var(--theme-text-alt);
 `;
 
 const Tooltip = styled.div`
@@ -195,7 +201,12 @@ export const Contributions: FC = () => {
                                         {hoverData.contributionCount}{' '}
                                         Contributions
                                     </div>
-                                    <div>{hoverData.date}</div>
+                                    <DateText>
+                                        {format(
+                                            new Date(hoverData.date),
+                                            'LLL d, u'
+                                        )}
+                                    </DateText>
                                 </div>
                             </TooltipInner>
                         </Tooltip>
