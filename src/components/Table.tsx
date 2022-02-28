@@ -68,6 +68,8 @@ const Columns = styled.div`
             border-top: 1px dotted #686868;
         }
     }
+
+    width: 100%;
 `;
 
 export const Table: FC<{

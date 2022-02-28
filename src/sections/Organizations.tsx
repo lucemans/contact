@@ -1,6 +1,8 @@
 import { format } from 'date-fns';
-import { ArrowRight } from 'react-feather';
+import { FC, useState } from 'react';
+import { ArrowRight, ArrowUpLeft } from 'react-feather';
 import styled from 'styled-components';
+import { Organization } from 'types/organization.type';
 
 import { Table } from '../components/Table';
 import { Profile } from '../static/profile';
@@ -107,13 +109,36 @@ const TagContainer = styled.div`
     }
 `;
 
-export const Organizations = () => {
+const PageContainer = styled.div`
+    width: 100%;
+    position: relative;
+    /* display: grid; */
+    /* grid-template-columns: 100% 100%; */
+    overflow: hidden;
+    clear: both;
+`;
+
+const PageRow = styled.div<{move: string}>`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-left: -100%;
+    transform: translateX(${({move})=>move});
+    transition: 250ms;
+`;
+
+const PageWidth = styled.div`
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+`;
+
+const OrgsList: FC<{setOrganization: (d: Organization) => void}> = ({setOrganization}) => {
     return (
-        <Table header={'TEAMS'}>
-            <ListOrgs>
+        <ListOrgs>
                 {Profile.orgs.map((organization) => (
                     <OrgEntry key={organization.label}>
-                        <OrgExternal>
+                        <OrgExternal onClick={()=>setOrganization(organization)}>
                             <OrgIcon
                                 src={organization.image}
                                 alt={organization.label + 'logo'}
@@ -154,7 +179,98 @@ export const Organizations = () => {
                         </OrgExternal>
                     </OrgEntry>
                 ))}
-            </ListOrgs>
+        </ListOrgs>
+    );
+};
+
+const OrgPageIcon = styled.img<{ color: string }>`
+    height: 6rem;
+    width: 6rem;
+    object-fit: contain;
+    user-select: none;
+    background: ${({ color }) => color};
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+`;
+
+const LeftColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const RightColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const OrgInfoWrapper = styled.div`
+    display: flex;
+    gap: 1rem;
+    width: calc(90vw - 10px);
+`;
+
+const OrgInfoReturn = styled(ArrowUpLeft)`
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transition: 250ms;
+    margin: 0.5rem;
+    &:hover {
+        transform: scale(2);
+    }
+`;
+
+export const OrgInfos: FC<{org: Organization, setOrganization: (d: Organization) => void}> = ({org, setOrganization}) => {
+
+    return (
+        <OrgInfoWrapper>
+            <OrgInfoReturn onClick={() => {setOrganization(null)}} />
+            <LeftColumn>
+                <OrgPageIcon src={org.image} alt="" color={org.color} />
+            </LeftColumn>
+            <RightColumn>
+                <div>{org.label}</div>
+
+                <TagContainer>
+                    {org.tags.map((tag) => (
+                        <Tag color={Tags[tag].color}>
+                            <span className="text">
+                                {Tags[tag].label}
+                            </span>
+                            <img
+                                src={Tags[tag].icon}
+                                alt={Tags[tag].label}
+                                className="icon"
+                            />
+                        </Tag>
+                    ))}
+                </TagContainer>
+            </RightColumn>
+        </OrgInfoWrapper>
+    );
+};
+
+const WrapperThing = styled.div`
+    width: 100%;
+`;
+
+export const Organizations = () => {
+    const [organization, setOrganization] = useState<Organization>(undefined);
+
+    return (
+        <WrapperThing>
+        <Table header={'TEAMS'}>
+            <PageContainer>
+                <PageRow move={organization ? 'calc(-100% - 2px)' : ''}>
+                    <PageWidth>
+                        <OrgsList setOrganization={setOrganization} />
+                    </PageWidth>
+                    <PageWidth>
+                        { organization && <OrgInfos org={organization} setOrganization={setOrganization}>hi</OrgInfos> }
+                    </PageWidth>
+                </PageRow>
+            </PageContainer>
         </Table>
+        </WrapperThing>
     );
 };

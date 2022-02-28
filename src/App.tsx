@@ -107,14 +107,7 @@ export const App = () => {
             <GlobalStyle />
             <NavBar />
             <Center className="content">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route
-                        path="/project/:project_id"
-                        element={<ProjectPage />}
-                    />
-                    <Route path="**" />
-                </Routes>
+                <HomePage />
             </Center>
         </Router>
     );
