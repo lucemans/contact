@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { FC, useEffect, useState } from 'react';
+import { RefreshCw } from 'react-feather';
 import styled from 'styled-components';
 
 import { Table } from '../components/Table';
@@ -55,6 +56,51 @@ const Tooltip = styled.div`
     }
 `;
 
+const Source = styled.a`
+    float: right;
+    color: var(--theme-text-alt);
+    text-decoration: none;
+    font-size: 0.8em;
+    &:hover {
+        text-decoration: underline;
+        color: var(--theme-text-main);
+    }
+`;
+
+const Reload = styled.button`
+    width: 1rem;
+    height: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--theme-text-alt);
+
+    > * {
+        transition: 250ms;
+        width: 1rem;
+        height: 1rem;
+        font-size: 1rem;
+    }
+    &:hover,
+    &:focus {
+        > * {
+            transform: rotate(45deg);
+            color: var(--color-green);
+        }
+    }
+    &:active {
+        > * {
+            transform: rotate(325deg);
+        }
+    }
+`;
+
+const BottomBar = styled.div`
+    margin-top: 1em;
+    /* margin-bottom: -1em; */
+`;
+
 const DaySquare = styled.rect`
     border-radius: 0.1rem;
     position: relative;
@@ -96,16 +142,8 @@ const brightnessLevels: Record<WaterLevel, number> = {
 };
 
 const themeColors = ['pink', 'blue', 'red', 'yellow', 'green'];
-const randomThemeColor = themeColors.at(
-    Math.floor(Math.random() * themeColors.length)
-);
-
-const transformWaterLevel = (water: WaterLevel) => {
-    return {
-        fill: `var(--color-${randomThemeColor})`,
-        background: `var(--color-${randomThemeColor})`,
-        filter: `brightness(${brightnessLevels[water]})`,
-    };
+const randomThemeColor = () => {
+    return themeColors.at(Math.floor(Math.random() * themeColors.length));
 };
 
 export const Contributions: FC = () => {
@@ -117,6 +155,15 @@ export const Contributions: FC = () => {
           }
         | 0
     >();
+    const [themeColor, setThemeColor] = useState<string>(randomThemeColor());
+
+    const transformWaterLevel = (water: WaterLevel) => {
+        return {
+            fill: `var(--color-${themeColor})`,
+            background: `var(--color-${themeColor})`,
+            filter: `brightness(${brightnessLevels[water]})`,
+        };
+    };
 
     useEffect(() => {
         (async () => {
@@ -217,6 +264,21 @@ export const Contributions: FC = () => {
                         </Tooltip>
                     )}
                 </Wrapper>
+                <BottomBar>
+                    <Reload
+                        onClick={() => {
+                            setThemeColor(randomThemeColor());
+                        }}
+                    >
+                        <RefreshCw />
+                    </Reload>
+                    <Source
+                        href="https://github.com/lvkdotsh/ghchart"
+                        target="_blank"
+                    >
+                        Source
+                    </Source>
+                </BottomBar>
             </DWrapper>
         </Table>
     );
