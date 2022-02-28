@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { FC, useState } from 'react';
-import { ArrowRight, ArrowUpLeft } from 'react-feather';
+import { ArrowRight, ArrowUpLeft, Linkedin } from 'react-feather';
 import styled from 'styled-components';
 import { Organization } from 'types/organization.type';
 
@@ -260,12 +260,20 @@ const WrapperThing = styled.div`
     width: 100%;
 `;
 
+const Link = styled.a`
+    color: var(--theme-text-main);
+    &:hover {
+        color: var(--color-blue);
+    }
+`;
+
+const ab = false;
 export const Organizations = () => {
     const [organization, setOrganization] = useState<Organization>(undefined);
 
     return (
         <WrapperThing>
-        <Table header={'TEAMS'}>
+        <Table header={'TEAMS'} sideHeader={ab && <Link href="https://linkedin.com/in/lucemans" target="_blank"><Linkedin /></Link>}>
             <PageContainer>
                 <PageRow move={organization ? 'calc(-100% - 2px)' : ''}>
                     <PageWidth>
