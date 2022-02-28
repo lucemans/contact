@@ -126,7 +126,12 @@ export const Contributions: FC = () => {
         })();
     }, [0]);
 
-    if (!contributions) return <Wrapper>Loading...</Wrapper>;
+    if (!contributions)
+        return (
+            <Table header={'Total Contributions in last 365 days'}>
+                Loading...
+            </Table>
+        );
 
     const svgWidth = contributions.weeks.length * 12 - 2;
     const svgHeight =
