@@ -23,14 +23,13 @@ const OrgExternal = styled.div`
     overflow: hidden;
     padding: 0.5em;
     flex-wrap: wrap;
-
-    @media (max-width: 500px) {
-    }
+    border: 1px solid transparent;
 
     &:hover {
         cursor: pointer;
-        outline: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.2);
+
+        border: 1px solid var(--theme-bg-hover);
+        /* background: rgba(255, 255, 255, 0.2); */
         ${RightArrow} {
             opacity: 1;
             width: 2rem;
@@ -111,7 +110,7 @@ const TagContainer = styled.div`
 
 const PageContainer = styled.div`
     width: 100%;
-    position: relative;
+    /* position: relative; */
     /* display: grid; */
     /* grid-template-columns: 100% 100%; */
     overflow: hidden;
@@ -209,14 +208,23 @@ const OrgInfoWrapper = styled.div`
     width: calc(90vw - 10px);
 `;
 
-const OrgInfoReturn = styled(ArrowUpLeft)`
-    width: 1rem;
-    height: 1rem;
+const OrgInfoReturn = styled.div`
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    background: var(--theme-bg);
+    border: 1px solid #686868;
+    padding: 0.25rem;
+    height: 1.75rem;
+    svg {
+        width: 1rem;
+        height: 1rem;
+    }
     cursor: pointer;
     transition: 250ms;
-    margin: 0.5rem;
+    transform: translateX(-50%);
     &:hover {
-        transform: scale(2);
+        background: var(--theme-bg-hover);
     }
 `;
 
@@ -224,13 +232,11 @@ export const OrgInfos: FC<{org: Organization, setOrganization: (d: Organization)
 
     return (
         <OrgInfoWrapper>
-            <OrgInfoReturn onClick={() => {setOrganization(null)}} />
             <LeftColumn>
                 <OrgPageIcon src={org.image} alt="" color={org.color} />
             </LeftColumn>
             <RightColumn>
                 <div>{org.label}</div>
-
                 <TagContainer>
                     {org.tags.map((tag) => (
                         <Tag color={Tags[tag].color}>
@@ -270,6 +276,13 @@ export const Organizations = () => {
                     </PageWidth>
                 </PageRow>
             </PageContainer>
+            {
+                organization && (
+                    <OrgInfoReturn onClick={() => {setOrganization(null)}}>
+                        <ArrowUpLeft />
+                    </OrgInfoReturn>
+                )
+            }
         </Table>
         </WrapperThing>
     );
