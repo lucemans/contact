@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Organization } from 'types/organization.type';
 import { Repository } from 'types/repository.type';
 import { Skill } from 'types/skill.type';
@@ -154,6 +155,7 @@ export const Profile: {
             color: '#fff',
             start_date: '28 Nov 2021',
             url: 'https://heineken.com/',
+            tags: ['react', 'typescript'],
         },
         {
             label: 'Triple',
@@ -161,6 +163,7 @@ export const Profile: {
             color: '#0E0940',
             start_date: '28 Nov 2021',
             url: 'https://wearetriple.com/',
+            tags: ['react', 'typescript'],
         },
         {
             label: 'Passionate People',
@@ -168,6 +171,7 @@ export const Profile: {
             color: '#171717',
             start_date: '1 Nov 2021',
             url: 'https://passionatepeople.io/',
+            tags: ['react', 'typescript'],
         },
         {
             label: 'Codana',
@@ -176,6 +180,7 @@ export const Profile: {
             start_date: '1 Feb 2021',
             end_date: '31 Oct 2021',
             url: 'https://codana.eu/',
+            tags: ['react', 'typescript'],
         },
         {
             label: 'EForumFactory',
@@ -184,6 +189,7 @@ export const Profile: {
             start_date: '1 Jan 2018',
             end_date: '1 Feb 2021',
             url: 'https://eforumfactory.be/',
+            tags: ['react', 'typescript'],
         },
     ],
     repos: [
@@ -203,7 +209,7 @@ export const Profile: {
             image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
             label: 'scyllo',
             description:
-                'The Cassandra/Scylla library you didn\'t want but got anyways.',
+                "The Cassandra/Scylla library you didn't want but got anyways.",
             language: 'typescript',
             link: 'https://github.com/lvkdotsh/scyllo',
         },

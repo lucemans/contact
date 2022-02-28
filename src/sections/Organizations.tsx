@@ -1,20 +1,35 @@
 import { format } from 'date-fns';
-import React, { useState } from 'react';
-import { Grid, List } from 'react-feather';
+import { ArrowRight } from 'react-feather';
 import styled from 'styled-components';
 
 import { Table } from '../components/Table';
 import { Profile } from '../static/profile';
+import { Tags } from '../types/tags.type';
 import { getDuration } from '../utils/getDuration';
+
+const RightArrow = styled.div`
+    /* margin-right: -50%; */
+    opacity: 0;
+    transition: 250ms;
+    width: 0;
+`;
 
 const OrgExternal = styled.div`
     display: flex;
     justify-content: stretch;
     align-items: center;
     width: 100%;
+    overflow: hidden;
+    padding: 0.5em;
     &:hover {
-        text-decoration: underline;
         cursor: pointer;
+        /* border: 1px solid white; */
+        outline: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+        ${RightArrow} {
+            opacity: 1;
+            width: 2rem;
+        }
     }
 `;
 
@@ -31,18 +46,8 @@ const OrgIcon = styled.img<{ color: string; standalone?: boolean }>`
     border-radius: 0.4rem;
 `;
 
-const GridOrgs = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-`;
-
-const IconContainer = styled.div`
-    cursor: pointer;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    user-select: none;
+const OrgInfo = styled.div`
+    flex-grow: 1;
 `;
 
 const ListOrgs = styled.div`
@@ -63,58 +68,62 @@ const OrgDate = styled.div`
     width: fit-content;
 `;
 
-export const Organizations = () => {
-    const [displayMode, setDisplayMode] = useState<'grid' | 'list'>('list');
+const Tag = styled.div<{ color: string }>`
+    color: ${({ color }) => color};
+    border: 1px solid ${({ color }) => color};
+    background: var(--theme-bg);
+    padding: 0.5em 0.8em;
+    border-radius: 1rem;
+    font-size: 0.8em;
+    width: fit-content;
+`;
 
+const TagContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+`;
+
+export const Organizations = () => {
     return (
         <Table header={'TEAMS'}>
-            {displayMode == 'grid' && (
-                <GridOrgs>
-                    {Profile.orgs.map((organization) => (
-                        <OrgEntry key={organization.label}>
-                            <OrgExternal>
-                                <OrgIcon
-                                    src={organization.image}
-                                    alt={organization.label + 'logo'}
-                                    color={organization.color}
-                                    standalone
-                                />
-                            </OrgExternal>
-                        </OrgEntry>
-                    ))}
-                </GridOrgs>
-            )}
-            {displayMode == 'list' && (
-                <ListOrgs>
-                    {Profile.orgs.map((organization) => (
-                        <OrgEntry key={organization.label}>
-                            <OrgExternal>
-                                <OrgIcon
-                                    src={organization.image}
-                                    alt={organization.label + 'logo'}
-                                    color={organization.color}
-                                />
-                                <div>
-                                    <OrgName>{organization.label}</OrgName>
-                                    <OrgDate>
-                                        {organization.end_date
-                                            ? getDuration(
-                                                  organization.start_date,
-                                                  organization.end_date
-                                              )
-                                            : `Since ${format(
-                                                  new Date(
-                                                      organization.start_date
-                                                  ),
-                                                  'MMMM yyyy'
-                                              )}`}
-                                    </OrgDate>
-                                </div>
-                            </OrgExternal>
-                        </OrgEntry>
-                    ))}
-                </ListOrgs>
-            )}
+            <ListOrgs>
+                {Profile.orgs.map((organization) => (
+                    <OrgEntry key={organization.label}>
+                        <OrgExternal>
+                            <OrgIcon
+                                src={organization.image}
+                                alt={organization.label + 'logo'}
+                                color={organization.color}
+                            />
+                            <OrgInfo>
+                                <OrgName>{organization.label}</OrgName>
+                                <OrgDate>
+                                    {organization.end_date
+                                        ? getDuration(
+                                              organization.start_date,
+                                              organization.end_date
+                                          )
+                                        : `Since ${format(
+                                              new Date(organization.start_date),
+                                              'MMMM yyyy'
+                                          )}`}
+                                </OrgDate>
+                            </OrgInfo>
+
+                            <TagContainer>
+                                {organization.tags.map((tag) => (
+                                    <Tag color={Tags[tag].color}>
+                                        {Tags[tag].label}
+                                    </Tag>
+                                ))}
+                            </TagContainer>
+                            <RightArrow>
+                                <ArrowRight />
+                            </RightArrow>
+                        </OrgExternal>
+                    </OrgEntry>
+                ))}
+            </ListOrgs>
         </Table>
     );
 };
