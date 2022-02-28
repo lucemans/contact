@@ -29,7 +29,7 @@ const OrgExternal = styled.div`
         cursor: pointer;
 
         border: 1px solid var(--theme-bg-hover);
-        /* background: rgba(255, 255, 255, 0.2); */
+
         ${RightArrow} {
             opacity: 1;
             width: 2rem;
