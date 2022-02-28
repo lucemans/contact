@@ -8,7 +8,6 @@ import { Tags } from '../types/tags.type';
 import { getDuration } from '../utils/getDuration';
 
 const RightArrow = styled.div`
-    /* margin-right: -50%; */
     opacity: 0;
     transition: 250ms;
     width: 0;
@@ -21,9 +20,13 @@ const OrgExternal = styled.div`
     width: 100%;
     overflow: hidden;
     padding: 0.5em;
+    flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+    }
+
     &:hover {
         cursor: pointer;
-        /* border: 1px solid white; */
         outline: 1px solid rgba(255, 255, 255, 0.2);
         background: rgba(255, 255, 255, 0.2);
         ${RightArrow} {
@@ -76,11 +79,32 @@ const Tag = styled.div<{ color: string }>`
     border-radius: 1rem;
     font-size: 0.8em;
     width: fit-content;
+    .icon {
+        display: none;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    @media (max-width: 500px) {
+        margin-left: -1.25em;
+        padding: 0.5em;
+        .icon {
+            display: block;
+        }
+        .text {
+            display: none;
+        }
+    }
 `;
 
 const TagContainer = styled.div`
     display: flex;
     gap: 1rem;
+    @media (max-width: 500px) {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 0em;
+    }
 `;
 
 export const Organizations = () => {
@@ -113,7 +137,14 @@ export const Organizations = () => {
                             <TagContainer>
                                 {organization.tags.map((tag) => (
                                     <Tag color={Tags[tag].color}>
-                                        {Tags[tag].label}
+                                        <span className="text">
+                                            {Tags[tag].label}
+                                        </span>
+                                        <img
+                                            src={Tags[tag].icon}
+                                            alt={Tags[tag].label}
+                                            className="icon"
+                                        />
                                     </Tag>
                                 ))}
                             </TagContainer>

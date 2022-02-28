@@ -68,29 +68,42 @@ const Source = styled.a`
 `;
 
 const Reload = styled.button`
-    width: 1rem;
+    width: fit-content;
     height: 1rem;
+    margin: 0;
     font-size: 1rem;
     cursor: pointer;
     background: transparent;
     border: none;
     color: var(--theme-text-alt);
+    display: flex;
+    gap: 0.5em;
 
-    > * {
+    > svg {
         transition: 250ms;
         width: 1rem;
         height: 1rem;
         font-size: 1rem;
     }
-    &:hover,
-    &:focus {
-        > * {
+    span {
+        width: fit-content;
+        opacity: 0;
+        display: none;
+    }
+    &:hover {
+        > svg {
             transform: rotate(45deg);
+        }
+        > * {
             color: var(--color-green);
+        }
+        > span {
+            opacity: 1;
+            display: block;
         }
     }
     &:active {
-        > * {
+        > svg {
             transform: rotate(325deg);
         }
     }
@@ -98,6 +111,8 @@ const Reload = styled.button`
 
 const BottomBar = styled.div`
     margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
     /* margin-bottom: -1em; */
 `;
 
@@ -271,6 +286,7 @@ export const Contributions: FC = () => {
                         }}
                     >
                         <RefreshCw />
+                        <span>Randomize Colors</span>
                     </Reload>
                     <Source
                         href="https://github.com/lvkdotsh/ghchart"
