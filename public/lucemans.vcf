@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:Luc van Kampen
+N;CHARSET=UTF-8:van Kampen;Luc;;;
+NICKNAME;CHARSET=UTF-8:Lucemans
+GENDER:M
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:luc@lucemans.nl
+EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:luc@passionatepeople.io
+TEL;TYPE=HOME,VOICE:+31618925911
+TITLE;CHARSET=UTF-8:Software Engineer
+ORG;CHARSET=UTF-8:Passionatepeople
+URL;CHARSET=UTF-8:https://luc.computer/
+X-SOCIALPROFILE;TYPE=twitter:https://twitter.com/lucemansnl
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/lucemans
+X-SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/channel/UC-UQ4n56ux0dI_01IYQKcZQ
+REV:2022-02-16T12:14:18.988Z
+END:VCARD

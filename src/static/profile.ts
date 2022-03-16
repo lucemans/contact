@@ -150,10 +150,19 @@ export const Profile: {
     ],
     orgs: [
         {
+            label: 'The Sting',
+            image: require('url:/assets/experience/tsting.jpeg'),
+            color: '#fff',
+            start_date: '3 Mar 2022',
+            url: 'https://thesting.com/',
+            tags: ['react', 'typescript'],
+        },
+        {
             label: 'Heineken',
             image: require('url:/assets/experience/heineken-corporate.svg'),
             color: '#fff',
             start_date: '28 Nov 2021',
+            end_date: '3 Mar 2022',
             url: 'https://heineken.com/',
             tags: ['react', 'typescript'],
         },
@@ -162,6 +171,7 @@ export const Profile: {
             image: require('url:/assets/experience/triple.svg'),
             color: '#0E0940',
             start_date: '28 Nov 2021',
+            end_date: '3 Mar 2022',
             url: 'https://wearetriple.com/',
             tags: ['react', 'typescript'],
         },
@@ -171,7 +181,7 @@ export const Profile: {
             color: '#171717',
             start_date: '1 Nov 2021',
             url: 'https://passionatepeople.io/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'next', 'vuejs', 'eth'],
         },
         {
             label: 'Codana',
@@ -180,7 +190,7 @@ export const Profile: {
             start_date: '1 Feb 2021',
             end_date: '31 Oct 2021',
             url: 'https://codana.eu/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'gatsby', 'storyblok', 'storybook', 'nx'],
         },
         {
             label: 'EForumFactory',
@@ -189,7 +199,7 @@ export const Profile: {
             start_date: '1 Jan 2018',
             end_date: '1 Feb 2021',
             url: 'https://eforumfactory.be/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'angular', 'electron', 'vuejs', 'ionic'],
         },
     ],
     repos: [

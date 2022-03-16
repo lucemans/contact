@@ -1,10 +1,12 @@
-import React from 'react';
+import { UserPlus } from 'react-feather';
 import styled from 'styled-components';
 
 import { Column, Table } from '../components/Table';
 
 const CColumn = styled(Column)`
     flex: 0;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const ProfilePictureContainer = styled.div`
@@ -33,6 +35,27 @@ const Key = styled.b``;
 
 const Value = styled.div``;
 
+const Icon = styled.div<{ mobile: boolean }>`
+    display: ${({ mobile }) => (mobile ? 'none' : 'block')};
+    color: var(--theme-text-main);
+    svg {
+        width: 1.4em;
+        height: 1.4em;
+    }
+    @media screen and (max-width: 765px) {
+        display: ${({ mobile }) => (mobile ? 'block' : 'none')};
+        svg {
+            width: 1.8em;
+            height: 1.8em;
+        }
+    }
+`;
+
+const DColumn = styled(Column)`
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const BasicInfo = () => {
     return (
         <Table header="Basic Info">
@@ -44,8 +67,13 @@ export const BasicInfo = () => {
                             alt=""
                         />
                     </ProfilePictureContainer>
+                    <a href="/public/lucemans.vcf">
+                        <Icon mobile={true}>
+                            <UserPlus />
+                        </Icon>
+                    </a>
                 </CColumn>,
-                <Column>
+                <DColumn>
                     <Properties>
                         {[
                             ['Name', 'Luc van Kampen'],
@@ -102,7 +130,12 @@ export const BasicInfo = () => {
                             </KeyValue>
                         ))}
                     </Properties>
-                </Column>,
+                    <a href="/public/lucemans.vcf">
+                        <Icon mobile={false}>
+                            <UserPlus />
+                        </Icon>
+                    </a>
+                </DColumn>,
             ]}
         </Table>
     );

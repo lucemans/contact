@@ -72,7 +72,18 @@ const OrgDate = styled.div`
     width: fit-content;
 `;
 
-const Tag = styled.div<{ color: string }>`
+const TagWrap = styled.div`
+    padding-right: 0;
+    transition: 250ms;
+    &:hover {
+        padding-right: 0.5rem;
+        &:first-child() {
+            padding-right: 0;
+        }
+    }
+`;
+
+const Tag = styled.div<{ color: string, display: boolean }>`
     color: ${({ color }) => color};
     border: 1px solid ${({ color }) => color};
     background: var(--theme-bg);
@@ -80,27 +91,20 @@ const Tag = styled.div<{ color: string }>`
     border-radius: 1rem;
     font-size: 0.8em;
     width: fit-content;
+    padding: 0.5em;
+    display: flex;
+    gap: 0.5rem;
+    margin-left: ${({display}) => display ? '-1.25em' : '0'};
     .icon {
-        display: none;
+        display: block;
         width: 1rem;
         height: 1rem;
-    }
-
-    @media (max-width: 500px) {
-        margin-left: -1.25em;
-        padding: 0.5em;
-        .icon {
-            display: block;
-        }
-        .text {
-            display: none;
-        }
     }
 `;
 
 const TagContainer = styled.div`
     display: flex;
-    gap: 1rem;
+    gap: 0.2rem;
     @media (max-width: 500px) {
         width: 100%;
         justify-content: flex-end;
@@ -117,12 +121,12 @@ const PageContainer = styled.div`
     clear: both;
 `;
 
-const PageRow = styled.div<{move: string}>`
+const PageRow = styled.div<{ move: string }>`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     padding-left: -100%;
-    transform: translateX(${({move})=>move});
+    transform: translateX(${({ move }) => move});
     transition: 250ms;
 `;
 
@@ -132,52 +136,62 @@ const PageWidth = styled.div`
     flex-shrink: 0;
 `;
 
-const OrgsList: FC<{setOrganization: (d: Organization) => void}> = ({setOrganization}) => {
+const Icon = styled.img`
+    height: 1rem;
+    width: 1rem;
+`;
+
+const OrgsList: FC<{ setOrganization: (d: Organization) => void }> = ({
+    setOrganization,
+}) => {
     return (
         <ListOrgs>
-                {Profile.orgs.map((organization) => (
-                    <OrgEntry key={organization.label}>
-                        <OrgExternal onClick={()=>setOrganization(organization)}>
-                            <OrgIcon
-                                src={organization.image}
-                                alt={organization.label + 'logo'}
-                                color={organization.color}
-                            />
-                            <OrgInfo>
-                                <OrgName>{organization.label}</OrgName>
-                                <OrgDate>
-                                    {organization.end_date
-                                        ? getDuration(
-                                              organization.start_date,
-                                              organization.end_date
-                                          )
-                                        : `Since ${format(
-                                              new Date(organization.start_date),
-                                              'MMMM yyyy'
-                                          )}`}
-                                </OrgDate>
-                            </OrgInfo>
+            {Profile.orgs.map((organization) => (
+                <OrgEntry key={organization.label}>
+                    <OrgExternal onClick={() => setOrganization(organization)}>
+                        <OrgIcon
+                            src={organization.image}
+                            alt={organization.label + 'logo'}
+                            color={organization.color}
+                        />
+                        <OrgInfo>
+                            <OrgName>{organization.label}</OrgName>
+                            <OrgDate>
+                                {organization.end_date
+                                    ? getDuration(
+                                          organization.start_date,
+                                          organization.end_date
+                                      )
+                                    : `Since ${format(
+                                          new Date(organization.start_date),
+                                          'MMMM yyyy'
+                                      )}`}
+                            </OrgDate>
+                        </OrgInfo>
 
-                            <TagContainer>
-                                {organization.tags.map((tag) => (
-                                    <Tag color={Tags[tag].color}>
-                                        <span className="text">
-                                            {Tags[tag].label}
-                                        </span>
-                                        <img
+                        <TagContainer>
+                            {organization.tags.map((tag) => (
+                                <TagWrap>
+                                    <Tag color={Tags[tag].color} display>
+                                        {/* <span className="text">
+                                                {Tags[tag].label}
+                                            </span> */}
+                                        <Icon
                                             src={Tags[tag].icon}
                                             alt={Tags[tag].label}
+                                            title={Tags[tag].label}
                                             className="icon"
                                         />
                                     </Tag>
-                                ))}
-                            </TagContainer>
-                            <RightArrow>
-                                <ArrowRight />
-                            </RightArrow>
-                        </OrgExternal>
-                    </OrgEntry>
-                ))}
+                                </TagWrap>
+                            ))}
+                        </TagContainer>
+                        <RightArrow>
+                            <ArrowRight />
+                        </RightArrow>
+                    </OrgExternal>
+                </OrgEntry>
+            ))}
         </ListOrgs>
     );
 };
@@ -228,8 +242,10 @@ const OrgInfoReturn = styled.div`
     }
 `;
 
-export const OrgInfos: FC<{org: Organization, setOrganization: (d: Organization) => void}> = ({org, setOrganization}) => {
-
+export const OrgInfos: FC<{
+    org: Organization;
+    setOrganization: (d: Organization) => void;
+}> = ({ org, setOrganization }) => {
     return (
         <OrgInfoWrapper>
             <LeftColumn>
@@ -239,16 +255,16 @@ export const OrgInfos: FC<{org: Organization, setOrganization: (d: Organization)
                 <div>{org.label}</div>
                 <TagContainer>
                     {org.tags.map((tag) => (
-                        <Tag color={Tags[tag].color}>
-                            <span className="text">
-                                {Tags[tag].label}
-                            </span>
-                            <img
-                                src={Tags[tag].icon}
-                                alt={Tags[tag].label}
-                                className="icon"
-                            />
-                        </Tag>
+                        <TagWrap>
+                            <Tag color={Tags[tag].color} display={false}>
+                                <img
+                                    src={Tags[tag].icon}
+                                    alt={Tags[tag].label}
+                                    className="icon"
+                                />
+                                <span className="text">{Tags[tag].label}</span>
+                            </Tag>
+                        </TagWrap>
                     ))}
                 </TagContainer>
             </RightColumn>
@@ -273,25 +289,46 @@ export const Organizations = () => {
 
     return (
         <WrapperThing>
-        <Table header={'TEAMS'} sideHeader={ab && <Link href="https://linkedin.com/in/lucemans" target="_blank"><Linkedin /></Link>}>
-            <PageContainer>
-                <PageRow move={organization ? 'calc(-100% - 2px)' : ''}>
-                    <PageWidth>
-                        <OrgsList setOrganization={setOrganization} />
-                    </PageWidth>
-                    <PageWidth>
-                        { organization && <OrgInfos org={organization} setOrganization={setOrganization}>hi</OrgInfos> }
-                    </PageWidth>
-                </PageRow>
-            </PageContainer>
-            {
-                organization && (
-                    <OrgInfoReturn onClick={() => {setOrganization(null)}}>
+            <Table
+                header={'TEAMS'}
+                sideHeader={
+                    ab && (
+                        <Link
+                            href="https://linkedin.com/in/lucemans"
+                            target="_blank"
+                        >
+                            <Linkedin />
+                        </Link>
+                    )
+                }
+            >
+                <PageContainer>
+                    <PageRow move={organization ? 'calc(-100% - 2px)' : ''}>
+                        <PageWidth>
+                            <OrgsList setOrganization={setOrganization} />
+                        </PageWidth>
+                        <PageWidth>
+                            {organization && (
+                                <OrgInfos
+                                    org={organization}
+                                    setOrganization={setOrganization}
+                                >
+                                    hi
+                                </OrgInfos>
+                            )}
+                        </PageWidth>
+                    </PageRow>
+                </PageContainer>
+                {organization && (
+                    <OrgInfoReturn
+                        onClick={() => {
+                            setOrganization(null);
+                        }}
+                    >
                         <ArrowUpLeft />
                     </OrgInfoReturn>
-                )
-            }
-        </Table>
+                )}
+            </Table>
         </WrapperThing>
     );
 };
