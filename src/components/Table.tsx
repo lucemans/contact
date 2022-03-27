@@ -81,7 +81,7 @@ export const Table: FC<{
 }> = ({ children, header, sideHeader, width, mobileWidth }) => {
     return (
         <Wrapper width={width} mobileWidth={mobileWidth}>
-            {header && <Header>{header}</Header>}
+            {header && <Header className="header">{header}</Header>}
             {sideHeader && <SideHeader>{sideHeader}</SideHeader>}
             <Body>
                 {typeof children == 'function' ? (

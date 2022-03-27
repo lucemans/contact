@@ -65,45 +65,65 @@ const TagCircle = styled.div<{ color: string }>`
     background: ${({ color }) => color};
 `;
 
-const EntryLink = styled.a`
+const HiddenLink = styled.a`
     color: inherit;
+    text-decoration: none;
+    flex: 1;
+    height: 100%;
+    display: block;
+    > div {
+        height: 100%;
+    }
+    &:hover {
+        /* text-decoration: underline; */
+        > div {
+            border-color: white;
+            color: white;
+            ${OrgInfo} {
+                color: white;
+            }
+        }
+        .header {
+            border: 1px solid white;
+        }
+    }
 `;
 
 const Repository: FC<{ repo: IRepository }> = ({ repo }) => {
     return (
-        <Table
-            header={
-                repo.label
-                // <>
-                //     <OrgName>
-                //         <Book />
-                //         {repo.label}
-                //     </OrgName>
-                //     <OrgGithub>
-                //         <EntryLink href={repo.link}>
-                //             <GitHub />
-                //         </EntryLink>
-                //     </OrgGithub>
-                // </>
-            }
-        >
-            <RepoEntry>
-                <OrgInfo>{repo.description}</OrgInfo>
-                <Tags>
-                    <Tag>
-                        <TagCircle color={Language[repo.language].color} />
-                        {Language[repo.language].label}
-                    </Tag>
-                </Tags>
-            </RepoEntry>
-        </Table>
+        <HiddenLink href={repo.link} target="_blank">
+            <Table
+                header={
+                    repo.label
+                    // <>
+                    //     <OrgName>
+                    //         <Book />
+                    //         {repo.label}
+                    //     </OrgName>
+                    //     <OrgGithub>
+                    //         <EntryLink href={repo.link}>
+                    //             <GitHub />
+                    //         </EntryLink>
+                    //     </OrgGithub>
+                    // </>
+                }
+            >
+                <RepoEntry>
+                    <OrgInfo>{repo.description}</OrgInfo>
+                    <Tags>
+                        <Tag>
+                            <TagCircle color={Language[repo.language].color} />
+                            {Language[repo.language].label}
+                        </Tag>
+                    </Tags>
+                </RepoEntry>
+            </Table>
+        </HiddenLink>
     );
 };
 
 export const Repositories = () => {
     const [expanded, setExpanded] = useState<string[]>([]);
-
-    console.log(Profile.repos);
 
     return (
         <RepoList>
