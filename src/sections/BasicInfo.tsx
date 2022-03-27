@@ -111,6 +111,15 @@ export const BasicInfo = () => {
                                     Luc van Kampen
                                 </a>,
                             ],
+                            [
+                                'Youtube',
+                                <a
+                                href="https://www.youtube.com/channel/UC-UQ4n56ux0dI_01IYQKcZQa"
+                                target="_blank"
+                                >
+                                    u/lucemans
+                                </a>
+                            ],
                             ['Eth', 'lucemans.eth'],
                             [
                                 'PGP Key',

@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   :root {
+    color-scheme: dark;
     --font-fallback: monospace;
     --font-body: 'Hack', var(--font-fallback);
     --font-mono: 'Hack', var(--font-fallback);

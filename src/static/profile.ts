@@ -155,7 +155,7 @@ export const Profile: {
             color: '#fff',
             start_date: '3 Mar 2022',
             url: 'https://thesting.com/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'next', 'sass'],
         },
         {
             label: 'Heineken',
@@ -164,7 +164,7 @@ export const Profile: {
             start_date: '28 Nov 2021',
             end_date: '3 Mar 2022',
             url: 'https://heineken.com/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'sass'],
         },
         {
             label: 'Triple',
@@ -173,7 +173,7 @@ export const Profile: {
             start_date: '28 Nov 2021',
             end_date: '3 Mar 2022',
             url: 'https://wearetriple.com/',
-            tags: ['react', 'typescript'],
+            tags: ['react', 'typescript', 'sass'],
         },
         {
             label: 'Passionate People',
@@ -181,7 +181,7 @@ export const Profile: {
             color: '#171717',
             start_date: '1 Nov 2021',
             url: 'https://passionatepeople.io/',
-            tags: ['react', 'typescript', 'next', 'vuejs', 'eth'],
+            tags: ['react', 'typescript', 'next', 'vuejs', 'eth', 'sass', 'storyblok'],
         },
         {
             label: 'Codana',

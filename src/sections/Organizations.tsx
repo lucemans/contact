@@ -139,6 +139,7 @@ const PageWidth = styled.div`
 const Icon = styled.img`
     height: 1rem;
     width: 1rem;
+    object-fit: contain;
 `;
 
 const OrgsList: FC<{ setOrganization: (d: Organization) => void }> = ({
