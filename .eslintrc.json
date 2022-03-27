@@ -13,7 +13,8 @@
         "lvksh"
     ],
     "env": {
-        "browser": true
+        "browser": true,
+        "es2022": false
     },
     "rules": {
         "unicorn/no-useless-undefined": "off"

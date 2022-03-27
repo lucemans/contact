@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HorizontalList } from './components/Flex';
 import { BasicInfo } from './sections/BasicInfo';
 import { Contributions } from './sections/Contributions';
+import { NowLive } from './sections/NowLive';
 import { Organizations } from './sections/Organizations';
 import { Repositories } from './sections/Repositories';
 import { Skills } from './sections/Skills';
@@ -22,22 +23,23 @@ const ContentWrapper = styled.div`
 export const HomePage: FC = () => {
     return (
         <ContentWrapper>
+            <NowLive />
             <BasicInfo />
             <HorizontalList>
                 <Organizations />
             </HorizontalList>
             <Repositories />
             <Contributions />
-            <Skills
+            {/* <Skills
                 title="Technologies"
                 set={Profile.technologies}
                 showDescription={true}
-            />
-            <HorizontalList>
+            /> */}
+            {/* <HorizontalList>
                 <Skills title="Tools" set={Profile.tools} />
                 <Skills title="Languages" set={Profile.languages} />
                 <Skills title="Databases" set={Profile.database} />
-            </HorizontalList>
+            </HorizontalList> */}
             {/* <Table header={"Timeline"}>
 <Timeline />
 </Table> */}
