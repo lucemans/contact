@@ -1,3 +1,5 @@
+import 'core-js/modules/es.array.at.js';
+import 'core-js/modules/es.string.at-alternative.js';
 import React from 'react';
 import { render } from 'react-dom';
 import { App } from './App';
