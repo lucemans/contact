@@ -114,10 +114,10 @@ export const BasicInfo = () => {
                             [
                                 'Youtube',
                                 <a
-                                href="https://www.youtube.com/channel/UC-UQ4n56ux0dI_01IYQKcZQa"
+                                href="https://www.youtube.com/c/Lucemans"
                                 target="_blank"
                                 >
-                                    u/lucemans
+                                    c/lucemans
                                 </a>
                             ],
                             ['Eth', 'lucemans.eth'],
