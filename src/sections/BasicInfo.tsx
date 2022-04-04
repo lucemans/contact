@@ -139,7 +139,7 @@ export const BasicInfo = () => {
                             </KeyValue>
                         ))}
                     </Properties>
-                    <a href="/public/lucemans.vcf">
+                    <a href="/public/lucemans.vcf" aria-label="Add to Contacts">
                         <Icon mobile={false}>
                             <UserPlus />
                         </Icon>
