@@ -2,6 +2,5 @@
 
 for file in *.png
 do
-    []
-    cwebp -q 0 ./"$file" -o - -resize 10 10 >> ./"${file%.*}".webp
+    cwebp -q 0 ./"$file" -o - -resize 40 40 >> ./"${file%.*}".webp
 done

@@ -15,7 +15,7 @@ export const Profile: {
     technologies: [
         {
             label: 'react',
-            image: require('url:/assets/skills/react.png'),
+            image: require('url:/assets/skills/react.webp'),
             description: 'front-end JavaScript library',
             relatedTechnologies: [
                 {
@@ -47,7 +47,7 @@ export const Profile: {
         },
         {
             label: 'nodejs',
-            image: require('url:/assets/skills/nodejs.png'),
+            image: require('url:/assets/skills/nodejs.webp'),
             description: 'server-side javascript',
         },
         {
@@ -57,19 +57,19 @@ export const Profile: {
         },
         {
             label: 'angular',
-            image: require('url:/assets/skills/angular.png'),
+            image: require('url:/assets/skills/angular.webp'),
             description: 'front-end JavaScript framework',
         },
         {
             label: 'styled-components',
-            image: require('url:/assets/skills/styled-components.png'),
+            image: require('url:/assets/skills/styled-components.webp'),
             description: 'react css styling in js',
         },
     ],
     languages: [
         {
             label: 'javascript',
-            image: require('url:/assets/skills/javascript.png'),
+            image: require('url:/assets/skills/javascript.webp'),
         },
         {
             label: 'typescript',
@@ -81,7 +81,7 @@ export const Profile: {
         },
         {
             label: 'python',
-            image: require('url:/assets/skills/python.png'),
+            image: require('url:/assets/skills/python.webp'),
         },
         {
             label: 'bash',
@@ -93,13 +93,13 @@ export const Profile: {
         },
         {
             label: 'deno',
-            image: require('url:/assets/skills/deno.png'),
+            image: require('url:/assets/skills/deno.webp'),
         },
     ],
     tools: [
         {
             label: 'docker',
-            image: require('url:/assets/skills/docker.png'),
+            image: require('url:/assets/skills/docker.webp'),
         },
         {
             label: 'parcel',
@@ -107,7 +107,7 @@ export const Profile: {
         },
         {
             label: 'ansible',
-            image: require('url:/assets/skills/ansible.png'),
+            image: require('url:/assets/skills/ansible.webp'),
         },
         {
             label: 'terraform',
@@ -177,7 +177,7 @@ export const Profile: {
         },
         {
             label: 'Passionate People',
-            image: require('url:/assets/experience/pp.png'),
+            image: require('url:/assets/experience/pp.webp'),
             color: '#171717',
             start_date: '1 Nov 2021',
             url: 'https://passionatepeople.io/',
@@ -185,7 +185,7 @@ export const Profile: {
         },
         {
             label: 'Codana',
-            image: require('url:/assets/experience/codana.png'),
+            image: require('url:/assets/experience/codana.webp'),
             color: '#8400ff',
             start_date: '1 Feb 2021',
             end_date: '31 Oct 2021',
@@ -194,7 +194,7 @@ export const Profile: {
         },
         {
             label: 'EForumFactory',
-            image: require('url:/assets/experience/eff2.png'),
+            image: require('url:/assets/experience/eff2.webp'),
             color: '#fff',
             start_date: '1 Jan 2018',
             end_date: '1 Feb 2021',
