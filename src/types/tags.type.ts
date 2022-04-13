@@ -8,7 +8,7 @@ export type TagNames = 'react' | 'typescript' | 'next' | 'vuejs' | 'eth' | 'stor
 
 export const Tags: Record<TagNames, Tag> = {
     react: {
-        icon: require('../../assets/skills/react.png'),
+        icon: require('../../assets/skills/react.webp'),
         label: 'React',
         color: '#61DBFB',
     },
@@ -18,22 +18,22 @@ export const Tags: Record<TagNames, Tag> = {
         color: '#007acc',
     },
     angular: {
-        icon: require('../../assets/skills/angular.png'),
+        icon: require('../../assets/skills/angular.webp'),
         label: 'Angular',
         color: '#dd1b16',
     },
     electron: {
-        icon: require('../../assets/skills/electron.png'),
+        icon: require('../../assets/skills/electron.webp'),
         label: 'Electron',
         color: '#9feaf9',
     },
     eth: {
-        icon: require('../../assets/skills/ethereum.png'),
+        icon: require('../../assets/skills/ethereum.webp'),
         label: 'Ethereum',
         color: '#62688f',
     },
     gatsby: {
-        icon: require('../../assets/skills/gatsby.png'),
+        icon: require('../../assets/skills/gatsby.webp'),
         label: 'Gatsby',
         color: '#663399',
     },
@@ -63,7 +63,7 @@ export const Tags: Record<TagNames, Tag> = {
         color: '#41b883',
     },
     nx:{
-        icon: require('../../assets/skills/nx.png'),
+        icon: require('../../assets/skills/nx.webp'),
         label: 'nrwl',
         color: '#012f55',
     },
