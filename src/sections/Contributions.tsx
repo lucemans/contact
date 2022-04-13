@@ -284,7 +284,7 @@ export const Contributions: FC = () => {
                         onClick={() => {
                             setThemeColor(randomThemeColor());
                         }}
-                        aria-name="Randomize Colors"
+                        aria-label="Randomize Colors"
                     >
                         <RefreshCw />
                         <span>Randomize Colors</span>

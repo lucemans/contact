@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     --color-gray: #2d2e2f;
     --color-white: #fff;
     --color-text-white: #c8c8c8;
-    --color-offwhite: #686868;
+    --color-offwhite: #888;
     --color-almost-black: #121212;
     --color-black: #000;
     --color-pink: #ff43ac;
@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     html, body {
       --color-bg: white;
       --color-main: #2d2e2f;
-      --color-alt: #6c6c6c;
+      --color-alt: #c9c9c9;
     }
     :root {
       font-size: 14px;

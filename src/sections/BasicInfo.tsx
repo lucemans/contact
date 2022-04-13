@@ -63,11 +63,11 @@ export const BasicInfo = () => {
                 <CColumn>
                     <ProfilePictureContainer>
                         <ProfilePicture
-                            src="https://avatars.githubusercontent.com/u/10339043?v=4"
-                            alt=""
+                            src="https://header.luc.computer/public/500x500.webp"
+                            alt="Profile Picture"
                         />
                     </ProfilePictureContainer>
-                    <a href="/public/lucemans.vcf">
+                    <a href="/public/lucemans.vcf" aria-label="Add to Contacts">
                         <Icon mobile={true}>
                             <UserPlus />
                         </Icon>
