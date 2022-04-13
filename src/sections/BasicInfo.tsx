@@ -65,6 +65,8 @@ export const BasicInfo = () => {
                         <ProfilePicture
                             src="https://header.luc.computer/public/500x500.webp"
                             alt="Profile Picture"
+                            width="200"
+                            height="200"
                         />
                     </ProfilePictureContainer>
                     <a href="/public/lucemans.vcf" aria-label="Add to Contacts">
