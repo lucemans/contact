@@ -5,7 +5,11 @@
     "author": "lucemans <luc@lucemans.nl>",
     "license": "MIT",
     "browserslist": [
-        "defaults", "last 2 versions", "Safari >= 13", "ios_saf >= 13", "not ios_saf < 13, Safari 13"
+        "defaults",
+        "last 2 versions",
+        "Safari >= 13",
+        "ios_saf >= 13",
+        "not ios_saf < 13, Safari 13"
     ],
     "dependencies": {
         "@babel/preset-env": "^7.16.11",
@@ -14,6 +18,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-feather": "^2.0.9",
+        "react-responsive": "^9.0.0-beta.6",
         "react-router": "^6.2.1",
         "react-router-dom": "^6.2.1",
         "styled-components": "^5.3.3"
