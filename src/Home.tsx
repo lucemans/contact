@@ -8,6 +8,7 @@ import { NowLive } from './sections/NowLive';
 import { Organizations } from './sections/Organizations';
 import { Repositories } from './sections/Repositories';
 import { Skills } from './sections/Skills';
+import { TalkedAt } from './sections/TalkedAt';
 import { Profile } from './static/profile';
 
 const ContentWrapper = styled.div`
@@ -25,6 +26,7 @@ export const HomePage: FC = () => {
         <ContentWrapper>
             <NowLive />
             <BasicInfo />
+            <TalkedAt />
             <HorizontalList>
                 <Organizations />
             </HorizontalList>
