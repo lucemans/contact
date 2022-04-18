@@ -1,6 +1,7 @@
-import { UserPlus, Twitter, GitHub, Linkedin, Youtube, Telegram } from 'react-feather';
+import { UserPlus, Twitter, GitHub, Linkedin, Youtube } from 'react-feather';
 import styled from 'styled-components';
 import ethereum from 'url:../../assets/skills/ethereum.webp';
+import telegram from 'url:../../assets/skills/telegram.png';
 import { useMediaQuery } from 'react-responsive';
 
 import { Column, Table } from '../components/Table';
@@ -197,7 +198,7 @@ const MobileInfo = () => {
                             l: 'Youtube',
                         },
                         {
-                            e: <Telegram />,
+                            e: <img src={telegram} />,
                             a: 'https://t.me/lucemans',
                             l: 'Telegram',
                         },
