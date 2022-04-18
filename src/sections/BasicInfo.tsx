@@ -1,4 +1,4 @@
-import { UserPlus, Twitter, GitHub, Linkedin, Youtube } from 'react-feather';
+import { UserPlus, Twitter, GitHub, Linkedin, Youtube, Telegram } from 'react-feather';
 import styled from 'styled-components';
 import ethereum from 'url:../../assets/skills/ethereum.webp';
 import { useMediaQuery } from 'react-responsive';
@@ -195,6 +195,11 @@ const MobileInfo = () => {
                             e: <Youtube />,
                             a: 'https://www.youtube.com/c/Lucemans',
                             l: 'Youtube',
+                        },
+                        {
+                            e: <Telegram />,
+                            a: 'https://t.me/lucemans',
+                            l: 'Telegram',
                         },
                         {
                             e: <img src={ethereum} />,
