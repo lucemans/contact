@@ -110,6 +110,7 @@ export const App = () => {
             <Center className="content">
                 <HomePage />
             </Center>
+            <luc-footer />
         </Router>
     );
 };
