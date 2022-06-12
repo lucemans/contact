@@ -150,10 +150,19 @@ export const Profile: {
     ],
     orgs: [
         {
+            label: 'Ethereum Naming Service',
+            image: require('url:/assets/experience/ens.webp'),
+            color: '#6a9ef7',
+            start_date: '21 June 2022',
+            url: 'https://ens.domains/',
+            tags: ['eth'],
+        },
+        {
             label: 'The Sting',
             image: require('url:/assets/experience/tsting.jpeg'),
             color: '#fff',
             start_date: '3 Mar 2022',
+            end_date: '20 June 2022',
             url: 'https://thesting.com/',
             tags: ['react', 'typescript', 'next', 'sass'],
         },
@@ -180,6 +189,7 @@ export const Profile: {
             image: require('url:/assets/experience/pp.webp'),
             color: '#171717',
             start_date: '1 Nov 2021',
+            end_date: '20 June 2022',
             url: 'https://passionatepeople.io/',
             tags: ['react', 'typescript', 'next', 'vuejs', 'eth', 'sass', 'storyblok'],
         },
