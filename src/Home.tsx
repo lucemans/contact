@@ -7,9 +7,9 @@ import { Contributions } from './sections/Contributions';
 import { NowLive } from './sections/NowLive';
 import { Organizations } from './sections/Organizations';
 import { Repositories } from './sections/Repositories';
-import { Skills } from './sections/Skills';
-import { TalkedAt } from './sections/TalkedAt';
-import { Profile } from './static/profile';
+// import { Skills } from './sections/Skills';
+// import { TalkedAt } from './sections/TalkedAt';
+// import { Profile } from './static/profile';
 
 const ContentWrapper = styled.div`
     width: 900px;
@@ -26,11 +26,11 @@ export const HomePage: FC = () => {
         <ContentWrapper>
             <NowLive />
             <BasicInfo />
-            <TalkedAt />
+            <Repositories />
+            {/* <TalkedAt /> */}
             <HorizontalList>
                 <Organizations />
             </HorizontalList>
-            <Repositories />
             <Contributions />
             {/* <Skills
                 title="Technologies"
