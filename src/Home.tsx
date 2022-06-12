@@ -28,10 +28,10 @@ export const HomePage: FC = () => {
             <BasicInfo />
             <Repositories />
             {/* <TalkedAt /> */}
+            <Contributions />
             <HorizontalList>
                 <Organizations />
             </HorizontalList>
-            <Contributions />
             {/* <Skills
                 title="Technologies"
                 set={Profile.technologies}
