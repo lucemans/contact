@@ -32,3 +32,10 @@ jobs:
           method: 'PUT'
           bearerToken: ${{ secrets.SIGNAL_TOKEN }}
           files: '{ "data": "${{ github.workspace }}/result.zip" }'
+      - name: Deploy Stage
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: 'https://staging-api.edgeserver.io/deployments/push?site=61544180794527744'
+          method: 'PUT'
+          bearerToken: ${{ secrets.SIGNAL_TOKEN }}
+          files: '{ "data": "${{ github.workspace }}/result.zip" }'
