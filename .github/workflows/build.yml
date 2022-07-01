@@ -1,4 +1,4 @@
-name: Deploy to IPFS signal
+name: Deploy to Edgeserver.io
 
 on:
   push:
@@ -12,30 +12,15 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.9.1'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "16.11.0"
+          registry-url: "https://registry.npmjs.org"
       - run: yarn
       - name: Build
         run: yarn build
-      - uses: vimtor/action-zip@v1
+      - name: Edgeserver Upload
+        uses: lvkdotsh/edgeserver-action@v0.0.31
         with:
-          files: dist/
-          dest: result.zip
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: ${{ github.workspace }}/result.zip
-      - name: Deploy Stage
-        uses: fjogeleit/http-request-action@master
-        with:
-          url: 'https://signal.lvksh.cloud/deployments/push?site=987654321'
-          method: 'PUT'
-          bearerToken: ${{ secrets.SIGNAL_TOKEN }}
-          files: '{ "data": "${{ github.workspace }}/result.zip" }'
-      - name: Deploy Stage
-        uses: fjogeleit/http-request-action@master
-        with:
-          url: 'https://staging-api.edgeserver.io/deployments/push?site=61544180794527744'
-          method: 'PUT'
-          bearerToken: ${{ secrets.SIGNAL_TOKEN }}
-          files: '{ "data": "${{ github.workspace }}/result.zip" }'
+          app_id: "60377749054820352"
+          server: https://signal.lvksh.cloud
+          token: ${{ secrets.SIGNAL_TOKEN }}
+          directory: dist
