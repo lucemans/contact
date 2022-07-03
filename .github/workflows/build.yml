@@ -25,7 +25,7 @@ jobs:
           token: ${{ secrets.SIGNAL_TOKEN }}
           directory: dist
       - name: Edgeserver Staging Upload
-        uses: lvkdotsh/edgeserver-action@master
+        uses: lvkdotsh/edgeserver-action@v0.1.1
         with:
           app_id: "66656824585097216"
           server: https://api.edgeserver.dev
