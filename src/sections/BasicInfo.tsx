@@ -109,6 +109,12 @@ const DesktopInfo = () => {
                     </a>,
                 ],
                 [
+                    'Telegram',
+                    <a href="https://t.me/lucemans" target="_blank">
+                        @lucemans
+                    </a>,
+                ],
+                [
                     'Linkedin',
                     <a href="https://linkedin.com/in/lucemans" target="_blank">
                         Luc van Kampen
