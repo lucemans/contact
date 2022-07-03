@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { NavBar } from './components/Navbar';
 import { HomePage } from './Home';
-import { ProjectPage } from './ProjectPage';
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -87,8 +85,8 @@ const GlobalStyle = createGlobalStyle`
 const Center = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
+    min-height: 100vh;
 `;
 
 export const App = () => {
@@ -106,11 +104,13 @@ export const App = () => {
     return (
         <Router>
             <GlobalStyle />
-            <NavBar />
-            <Center className="content">
-                <HomePage />
-            </Center>
-            <luc-footer />
+            <luc-wrapper>
+                {/* <NavBar /> */}
+                <Center className="content">
+                    <HomePage />
+                </Center>
+            </luc-wrapper>
+            {/* <luc-footer /> */}
         </Router>
     );
 };

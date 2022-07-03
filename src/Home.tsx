@@ -14,10 +14,16 @@ import { Repositories } from './sections/Repositories';
 const ContentWrapper = styled.div`
     width: 900px;
     max-width: calc(100vw - 2rem);
-    margin: 0 1rem;
+    /* padding: 0 1rem; */
     padding-bottom: 10vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* min-height: 100vh; */
     > * {
         margin-bottom: 2rem;
+    }
+    @media screen and (min-width: 1200px) {
+        padding-top: 100px;
     }
 `;
 
@@ -42,9 +48,9 @@ export const HomePage: FC = () => {
                 <Skills title="Languages" set={Profile.languages} />
                 <Skills title="Databases" set={Profile.database} />
             </HorizontalList> */}
-            {/* <Table header={"Timeline"}>
-<Timeline />
-</Table> */}
+            {/* <Table header={'Timeline'}>
+                <Timeline />
+            </Table> */}
         </ContentWrapper>
     );
 };
