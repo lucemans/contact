@@ -110,6 +110,10 @@ export const App = () => {
                     <HomePage />
                 </Center>
             </luc-wrapper>
+            <link
+                rel="stylesheet"
+                href="https://header.luc.computer/style.css"
+            />
             {/* <luc-footer /> */}
         </Router>
     );
