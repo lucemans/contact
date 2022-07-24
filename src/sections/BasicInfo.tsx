@@ -1,20 +1,10 @@
-import { UserPlus, Twitter, GitHub, Linkedin, Youtube } from 'react-feather';
+import { GitHub, Linkedin, Twitter, UserPlus, Youtube } from 'react-feather';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import ethereum from 'url:../../assets/skills/ethereum.webp';
 import telegram from 'url:../../assets/skills/telegram.png';
-import { useMediaQuery } from 'react-responsive';
 
-import { Column, Table } from '../components/Table';
-
-const CColumn = styled(Column)`
-    flex: 0;
-    display: flex;
-    justify-content: space-between;
-`;
-
-const ProfilePictureContainer = styled.div`
-    width: 200px;
-`;
+import { Table } from '../components/Table';
 
 const ProfilePicture = styled.img`
     width: 100%;
@@ -55,11 +45,6 @@ const Icon = styled.div<{ mobile: boolean }>`
             height: 1.8em;
         }
     }
-`;
-
-const DColumn = styled(Column)`
-    display: flex;
-    justify-content: space-between;
 `;
 
 export const Socials = styled.div`
@@ -186,7 +171,7 @@ const MobileInfo = () => {
                         {
                             e: <Twitter />,
                             a: 'https://twitter.com/lucemansnl',
-                            l: 'Twitter'
+                            l: 'Twitter',
                         },
                         {
                             e: <GitHub />,
@@ -230,29 +215,29 @@ export const BasicInfo = () => {
     return (
         <Table header="Basic Info">
             {() => [
-                <CColumn>
-                    <ProfilePictureContainer>
+                <div className="flex-grow-0 w-full gap-4 md:gap-0 md:w-52 flex justify-between column">
+                    <div className="w-52 md:w-full">
                         <ProfilePicture
                             src="https://header.luc.computer/public/500x500.webp"
                             alt="Profile Picture"
                             width="200"
                             height="200"
                         />
-                    </ProfilePictureContainer>
+                    </div>
                     <a href="/public/lucemans.vcf" aria-label="Add to Contacts">
                         <Icon mobile={true}>
                             <UserPlus />
                         </Icon>
                     </a>
-                </CColumn>,
-                <DColumn>
+                </div>,
+                <div className="column flex justify-between">
                     {isDesktopOrMobile ? <DesktopInfo /> : <MobileInfo />}
                     <a href="/public/lucemans.vcf" aria-label="Add to Contacts">
                         <Icon mobile={false}>
                             <UserPlus />
                         </Icon>
                     </a>
-                </DColumn>,
+                </div>,
             ]}
         </Table>
     );

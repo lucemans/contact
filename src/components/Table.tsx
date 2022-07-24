@@ -1,18 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div<{ width: string; mobileWidth: string }>`
-    position: relative;
-    border: 1px solid #686868;
-    break-inside: avoid;
-    width: ${({ width }) => width};
-    display: flex;
-    flex-direction: column;
-    @media screen and (max-width: 765px) {
-        width: ${({ mobileWidth }) => mobileWidth};
-    }
-`;
-
 const Header = styled.div`
     position: absolute;
     left: 1rem;
@@ -40,38 +28,6 @@ const SideHeader = styled.div`
     padding: 0.35em;
 `;
 
-const Body = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-`;
-
-export const Column = styled.div`
-    padding: 1.4rem;
-    flex: 1;
-    min-height: 100%;
-`;
-
-const Columns = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-    overflow: hidden;
-    word-wrap: break-word;
-    ${Column} + ${Column} {
-        border-left: 1px dotted #686868;
-    }
-    @media screen and (max-width: 765px) {
-        flex-direction: column;
-        ${Column} + ${Column} {
-            border-left: 0;
-            border-top: 1px dotted #686868;
-        }
-    }
-
-    width: 100%;
-`;
-
 export const Table: FC<{
     header: React.ReactNode | null;
     children: React.ReactNode | (() => React.ReactNode[]);
@@ -80,21 +36,24 @@ export const Table: FC<{
     mobileWidth?: string;
 }> = ({ children, header, sideHeader, width, mobileWidth }) => {
     return (
-        <Wrapper width={width} mobileWidth={mobileWidth}>
+        <div
+            className="relative border border-neutral-600 break-inside-avoid flex flex-col"
+            style={{ width }}
+        >
             {header && <Header className="header">{header}</Header>}
             {sideHeader && <SideHeader>{sideHeader}</SideHeader>}
-            <Body>
+            <div className="flex flex-1 flex-col">
                 {typeof children == 'function' ? (
-                    <Columns>
+                    <div className="columns flex flex-col overflow-hidden break-words w-full md:flex-row">
                         {' '}
                         {children().map(
                             (column: React.ReactNode, index: number) => column
                         )}
-                    </Columns>
+                    </div>
                 ) : (
-                    <Column>{children}</Column>
+                    <div className="column">{children}</div>
                 )}
-            </Body>
-        </Wrapper>
+            </div>
+        </div>
     );
 };

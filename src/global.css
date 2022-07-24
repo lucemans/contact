@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.column + .column {
+    border-left: 1px dotted #686868;
+}
+
+@media screen and (max-width: 765px) {
+    .column + .column {
+        border-left: 0;
+        border-top: 1px dotted #686868;
+    }
+}
+
+.column {
+    @apply p-6 flex-grow min-h-full;
+}

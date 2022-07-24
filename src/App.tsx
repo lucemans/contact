@@ -1,24 +1,10 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import { HomePage } from './Home';
 
 const GlobalStyle = createGlobalStyle`
-  html, body {
-    background: var(--color-bg);
-    color: var(--color-main);
-    font-family: 'Hack', monospace;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-  }
-  html {
-    overflow-y: scroll;
-  }
-  * {
-    box-sizing: border-box;
-  }
   :root {
     color-scheme: dark;
     --font-fallback: monospace;
@@ -82,13 +68,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Center = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-height: 100vh;
-`;
-
 export const App = () => {
     useEffect(() => {
         if (
@@ -106,9 +85,9 @@ export const App = () => {
             <GlobalStyle />
             <luc-wrapper>
                 {/* <NavBar /> */}
-                <Center className="content">
+                <div className="content w-full flex justify-center">
                     <HomePage />
-                </Center>
+                </div>
             </luc-wrapper>
             <link
                 rel="stylesheet"
