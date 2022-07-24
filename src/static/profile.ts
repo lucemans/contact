@@ -191,7 +191,15 @@ export const Profile: {
             start_date: '1 Nov 2021',
             end_date: '20 June 2022',
             url: 'https://passionatepeople.io/',
-            tags: ['react', 'typescript', 'next', 'vuejs', 'eth', 'sass', 'storyblok'],
+            tags: [
+                'react',
+                'typescript',
+                'next',
+                'vuejs',
+                'eth',
+                'sass',
+                'storyblok',
+            ],
         },
         {
             label: 'Codana',
@@ -200,7 +208,14 @@ export const Profile: {
             start_date: '1 Feb 2021',
             end_date: '31 Oct 2021',
             url: 'https://codana.eu/',
-            tags: ['react', 'typescript', 'gatsby', 'storyblok', 'storybook', 'nx'],
+            tags: [
+                'react',
+                'typescript',
+                'gatsby',
+                'storyblok',
+                'storybook',
+                'nx',
+            ],
         },
         {
             label: 'EForumFactory',
@@ -209,7 +224,14 @@ export const Profile: {
             start_date: '1 Jan 2018',
             end_date: '1 Feb 2021',
             url: 'https://eforumfactory.be/',
-            tags: ['react', 'typescript', 'angular', 'electron', 'vuejs', 'ionic'],
+            tags: [
+                'react',
+                'typescript',
+                'angular',
+                'electron',
+                'vuejs',
+                'ionic',
+            ],
         },
     ],
     repos: [
@@ -229,7 +251,7 @@ export const Profile: {
             image: 'https://avatars.githubusercontent.com/u/76572014?s=200&v=4',
             label: 'scyllo',
             description:
-                "The Cassandra/Scylla library you didn't want but got anyways.",
+                'The Cassandra/Scylla library you didn\'t want but got anyways.',
             language: 'typescript',
             link: 'https://github.com/lvkdotsh/scyllo',
         },
