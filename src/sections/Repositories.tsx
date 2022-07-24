@@ -6,7 +6,7 @@ import grantrLogo from '../../public/logos/grantr.png';
 import permissioLogo from '../../public/logos/permissio.svg';
 import scylloLogo from '../../public/logos/scyllo.png';
 import sunflakeLogo from '../../public/logos/sunflake.svg';
-import loggerLogo from '../../public/logos/sunflake.svg';
+import loggerLogo from '../../public/logos/logger.svg';
 import pogLogo from '../../public/logos/pog.png';
 import tictacsoLogo from '../../public/logos/tictacso.svg';
 
