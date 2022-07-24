@@ -37,7 +37,7 @@ export const Table: FC<{
 }> = ({ children, header, sideHeader, width, mobileWidth }) => {
     return (
         <div
-            className="relative border border-neutral-600 break-inside-avoid flex flex-col"
+            className="relative border-2 border-neutral-600 rounded-md break-inside-avoid flex flex-col"
             style={{ width }}
         >
             {header && <Header className="header">{header}</Header>}
