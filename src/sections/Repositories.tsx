@@ -1,13 +1,14 @@
+import hexRgb from 'hex-rgb';
 import { FC } from 'react';
 
 import edgeserverLogo from '../../public/logos/edgeserver.svg';
 import errorFnsLogo from '../../public/logos/error-fns.svg';
 import grantrLogo from '../../public/logos/grantr.png';
+import loggerLogo from '../../public/logos/logger.svg';
 import permissioLogo from '../../public/logos/permissio.svg';
+import pogLogo from '../../public/logos/pog.png';
 import scylloLogo from '../../public/logos/scyllo.png';
 import sunflakeLogo from '../../public/logos/sunflake.svg';
-import loggerLogo from '../../public/logos/logger.svg';
-import pogLogo from '../../public/logos/pog.png';
 import tictacsoLogo from '../../public/logos/tictacso.svg';
 
 type RepoCard = {
@@ -39,7 +40,7 @@ const Repos: RepoCard[] = [
         logo: scylloLogo,
         name: 'Scyllo',
         description:
-            "The Cassandra/Scylla library you didn't want but got anyways.",
+            'The Cassandra/Scylla library you didn\'t want but got anyways.',
         color: '#57d1e5',
         url: 'https://www.npmjs.com/package/scyllo',
     },
@@ -74,7 +75,7 @@ const SmallRepos: RepoCard[] = [
         logo: scylloLogo,
         name: 'Scyllo',
         description:
-            "The Cassandra/Scylla library you didn't want but got anyways.",
+            'The Cassandra/Scylla library you didn\'t want but got anyways.',
         color: '#57d1e5',
         url: 'https://www.npmjs.com/package/scyllo',
     },
@@ -125,10 +126,17 @@ const SmallRepos: RepoCard[] = [
 ];
 
 const Repository: FC<{ repository: RepoCard }> = ({ repository }) => {
+    const rgb = hexRgb(repository.color);
+
     return (
-        <div
-            className="flex flex-row justify-start sm:justify-start sm:flex-col items-center sm:p-4 w-full border-2 rounded-md"
-            style={{ borderColor: repository.color }}
+        <a
+            href={repository.url}
+            target="_blank"
+            className="flex flex-row justify-start sm:justify-start sm:flex-col items-center sm:p-4 w-full border-2 rounded-md hover:bg-opacity-20 bg-opacity-0 transition-all"
+            style={{
+                borderColor: repository.color,
+                backgroundColor: `rgb(${rgb.red} ${rgb.green} ${rgb.blue} / var(--tw-bg-opacity) )`,
+            }}
         >
             <div
                 className="py-4 sm:px-0 pl-4 pr-3 border-r sm:border-r-0"
@@ -149,7 +157,7 @@ const Repository: FC<{ repository: RepoCard }> = ({ repository }) => {
             >
                 {repository.name}
             </h3>
-        </div>
+        </a>
     );
 };
 

@@ -11,6 +11,7 @@ specifiers:
   date-fns: ^2.28.0
   eslint: ^8.8.0
   eslint-plugin-lvksh: ^1.3.0
+  hex-rgb: ^5.0.0
   parcel: ^2.0.1
   postcss: ^8.4.14
   react: ^17.0.2
@@ -28,6 +29,7 @@ dependencies:
   '@js-temporal/polyfill': 0.4.1
   core-js: 3.23.3
   date-fns: 2.28.0
+  hex-rgb: 5.0.0
   postcss: 8.4.14
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -3441,6 +3443,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+
+  /hex-rgb/5.0.0:
+    resolution: {integrity: sha512-NQO+lgVUCtHxZ792FodgW0zflK+ozS9X9dwGp9XvvmPlH7pyxd588cn24TD3rmPm/N0AIRXF10Otah8yKqGw4w==}
+    engines: {node: '>=12'}
+    dev: false
 
   /history/5.3.0:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
