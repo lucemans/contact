@@ -10,6 +10,7 @@ import pogLogo from '../../public/logos/pog.png';
 import scylloLogo from '../../public/logos/scyllo.png';
 import sunflakeLogo from '../../public/logos/sunflake.svg';
 import tictacsoLogo from '../../public/logos/tictacso.svg';
+import emunLogo from '../../public/logos/emun.png';
 
 type RepoCard = {
     logo: string;
@@ -107,6 +108,13 @@ const SmallRepos: RepoCard[] = [
             'Zero dependency, light-weight, blazing fast customizable logging library',
         color: '#555',
         url: 'https://www.npmjs.com/package/@lvksh/logger',
+    },
+    {
+        logo: emunLogo,
+        name: 'EMUN 2020',
+        description: 'Online Model United Nations',
+        color: '#4D9BC5',
+        url: 'https://emun.app',
     },
     {
         logo: pogLogo,
